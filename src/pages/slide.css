@@ -1,0 +1,12 @@
+.slide-wrapper {
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(66,65,110,1) 35%, rgba(26,61,68,1) 100%);
+}
+
+.slide-image {
+    display: block;
+    max-width: 25%;
+    height: 25%;
+    margin: auto;
+    box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}

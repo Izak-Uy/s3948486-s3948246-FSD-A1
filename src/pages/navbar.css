@@ -1,11 +1,8 @@
 .navbar {
-    background-color: rgb(233, 60, 22);
-    
-
+    background-color: #EAEAEA;
     padding: 10px;
     color: black;
     font-weight: bold;
-    text-decoration: none;
 }
 
 .navbar ul {
@@ -19,6 +16,10 @@
     line-height: 3em;
     display: block;
     list-style: none;
+}
+
+.navbar ul li a {
+    text-decoration: none;
 }
 
 .navbar ul li:hover {
