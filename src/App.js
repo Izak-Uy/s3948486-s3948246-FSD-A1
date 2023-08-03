@@ -2,13 +2,15 @@ import './App.css';
 import Header from './pages/header'
 import Navbar from './pages/navbar'
 import Slide from './pages/slide'
+import Footer from './pages/footer'
 
 function App() {
   return (
     <div>
-      <Header />
       <Navbar />
+      <Header />
       <Slide />
+      <Footer />
     </div>
   );
 }

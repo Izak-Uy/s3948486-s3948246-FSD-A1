@@ -1,30 +1,37 @@
-.navbar {
+.footer-wrapper {
     background-color: #EAEAEA;
     padding: 10px;
     color: black;
     font-weight: bold;
-    width: 100%;
-    position: fixed;
-    top: 0;
 }
 
-.navbar ul {
+.footer-content {
+    padding: 20px;
+    line-height: 3em;
+    display: block;
+}
+
+.footer-content ul {
     text-align: center;
     margin: 0;
     display: flex;
 }
 
-.navbar ul li {
+.footer-content ul li {
     padding: 20px;
     line-height: 3em;
     display: block;
     list-style: none;
 }
 
-.navbar ul li a {
+.footer-content ul li a {
     text-decoration: none;
 }
 
-.navbar ul li:hover {
+.footer-content ul li:hover {
     background-color: rgb(189, 37, 3);
+}
+
+.footer-link-right {
+    float: right;
 }
