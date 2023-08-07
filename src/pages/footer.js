@@ -12,7 +12,7 @@ const Footer =()=> {
                         <a href='#'>About Us</a>
                     </li>
                     <li className='footer-link-right'>
-                        <a href='top'>Back to top</a>
+                        <a href='#top'>Back to top</a>
                     </li>
                 </ul>
             </div>
