@@ -1,18 +1,18 @@
 .header {
-    margin-top: 110px;
+    /* margin-top: 110px; */
     background: #42416E;
-    padding: 0.5px;
+    /* padding: 0.1px; */
 }
 
 .header h3 {
-    margin: auto;
-    font-size: 200px;
+    margin: 0px;
+    font-size: 215px;
     /* -webkit-text-stroke-width: 1px; */
     -webkit-text-stroke-color: black;
     font-family: 'Outward';
     color: #EAEAEA;
     text-align: center;
-    letter-spacing: 10px;
+    letter-spacing: 30px;
 }
 
 @font-face {

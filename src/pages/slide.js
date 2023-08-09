@@ -1,10 +1,12 @@
 import './slide.css'
 
-const slide =()=> {
+const slide =({image})=> {
     return (
         <div className='slide-wrapper'>
-            <div className='bg-image'></div>
-            <img className='slide-image' src='https://www.hollywoodreporter.com/wp-content/uploads/2022/07/Oppenheimer-Movie-Poster-Universal-Publicity-EMBED-2022-.jpg?w=1000' alt='oppenheimer'></img>
+            <div className='bg-image'>
+                <img className='bg-image-image' src={image}></img>
+            </div>
+            <img className='slide-image' src={image} alt='oppenheimer'></img>
         </div>
     )
 }

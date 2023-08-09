@@ -9,9 +9,17 @@ const content =()=> {
                     <div className='movie-slot-container'>
                         this
                     </div>
+                    <div className='movie-slot-container'>
+                        this
+                    </div>
                 </div>
                 <div className='right-content-col'>
-                    More movies go here
+                    <div className='movie-slot-container'>
+                        this
+                    </div>
+                    <div className='movie-slot-container'>
+                        this
+                    </div>
                 </div>
             </div>
 
