@@ -15,7 +15,7 @@ function App() {
     <div>
       <Navbar />
       <Header />
-      <Slide image={movies.oppenheimer}/>
+      <Slide image={movies.barbie}/>
       <Content />
       <Footer />
     </div>

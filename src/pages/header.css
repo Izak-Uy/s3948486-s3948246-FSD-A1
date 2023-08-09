@@ -1,7 +1,7 @@
 .header {
-    /* margin-top: 110px; */
-    background: #42416E;
-    /* padding: 0.1px; */
+    /* background: #42416E; */
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 10%, rgba(66,65,110,1) 50%, rgb(2,0,36,1) 90%);
 }
 
 .header h3 {
