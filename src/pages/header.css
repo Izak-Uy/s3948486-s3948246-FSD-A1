@@ -1,12 +1,12 @@
 .header {
     margin-top: 110px;
     background: #42416E;
-    padding: 5em;
+    padding: 0.5px;
 }
 
 .header h3 {
     margin: auto;
-    font-size: 125px;
+    font-size: 200px;
     /* -webkit-text-stroke-width: 1px; */
     -webkit-text-stroke-color: black;
     font-family: 'Outward';
