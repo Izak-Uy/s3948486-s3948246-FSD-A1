@@ -1,4 +1,4 @@
-.slide-wrapper {
+.slide-wrapper{
     /* background: rgb(2,0,36);
     background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(66,65,110,1) 35%, rgba(26,61,68,1) 100%); */
     
@@ -10,10 +10,20 @@
     height: 80vh;
     width: 100%;
     overflow: hidden;
+
+    margin: 0;
 }
 
-.bg-image img {
+.slide-slider {
+    white-space: nowrap;
+    transition: ease 1000ms;
+    position: relative;
+}
+
+.bg-image {
     /* background-image: url("https://www.hollywoodreporter.com/wp-content/uploads/2022/07/Oppenheimer-Movie-Poster-Universal-Publicity-EMBED-2022-.jpg?w=1000"); */
+    display: inline-block;
+    
     position: relative;
     filter: blur(5px);
     z-index: -1;
@@ -23,18 +33,20 @@
     height: 80vh;
     width: 100%;
     object-fit: cover;
-    transform: scale(1.1);
+    /* transform: scale(1.1); */
+
 }
 
-
 .slide-image {
+    display: inline-block;
+
     position: absolute;
     top: 50%;
     left: 50%;
-    margin-right: 50%;
+    /* margin-right: 50%; */
     transform: translate(-50%, -50%);
     z-index: 2; 
-    display: block;
+    /* display: block; */
     max-width: 100%;
     height: 100%;
     margin: auto;
@@ -42,4 +54,5 @@
     /* backdrop-filter: blur(5px); */
     background-color: rgba(255, 255, 255, 0.2);
     object-fit: cover;
+
 }
