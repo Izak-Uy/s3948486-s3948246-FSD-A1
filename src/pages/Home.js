@@ -1,8 +1,8 @@
-import Header from './pages/header'
-import Slide from './pages/slide'
-import Content from './pages/content'
-import Footer from './pages/footer';
-import Navbar from './pages/navbar';
+import Header from '../components/header'
+import Slide from '../components/slide'
+import Content from '../components/content'
+import Footer from '../components/footer';
+import Navbar from '../components/navbar';
 
 
 function Home() {
