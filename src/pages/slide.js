@@ -3,7 +3,7 @@ import './slide.css'
 
 const Slide =({imageArrayProps})=> {
     
-    const  imageArray = imageArrayProps;
+    const imageArray = imageArrayProps;
     const [currIndex, setIndex] = React.useState(0);
     const delay = 2500;
 
@@ -43,9 +43,6 @@ const Slide =({imageArrayProps})=> {
                             ></img>
                         </>
                     ))}
-                </div>
-                <div>
-
                 </div>
         </div>
     )

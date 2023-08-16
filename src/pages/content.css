@@ -1,16 +1,68 @@
-.content-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    text-align: center;
-}
-
-.left-content-col, .right-content-col {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    text-align: center;
+.releases {
+    background: #42416E;
 }
 
 .content-header {
+    padding-top: 2%;
+    padding-bottom: 2%;
+    font-family: 'Outward';
+    font-size: 60px;
+    color: white;
+}
+
+.content-container {
+    /* display: grid; */
+    /* grid-template-columns: 1fr 1fr; */
+    /* gap: 0; */
+
+    /* text-align: center; */
+    /* line-height: 0; */
+
+    line-height: 0;       
+    -webkit-column-count: 2;    
+    -webkit-column-gap: 0px;    
+    -moz-column-count: 2;
+    -moz-column-gap: 0px;
+    column-count: 2;    
+    column-gap: 0px;
+
+    display:inline-block;    
+    margin-right: auto;    
+    margin-left: auto; 
+}
+
+
+.content-header {
     text-align: center;
+}
+
+.movie-slot-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    clear: left;
+}
+
+.movie-slot-container img {
+    width: 100%;
+    height: auto;
+    /* object-fit: cover;
+    display: block; */
+    
+    /* line-height: 0;
+    -webkit-column-count: 2;
+    -webkit-column-gap: 0px;
+    -moz-column-count: 2;
+    -moz-column-gap: 0;
+    column-count: 2;
+    column-gap: 0px; */
+    
+}
+
+@font-face {
+    font-family: 'Outward';
+    src: url(/public/Akira-Expanded-Demo.otf);
+    font-weight: normal;
+    font-style: normal;
 }
 
