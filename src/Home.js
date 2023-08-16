@@ -1,6 +1,8 @@
 import Header from './pages/header'
 import Slide from './pages/slide'
 import Content from './pages/content'
+import Footer from './pages/footer';
+import Navbar from './pages/navbar';
 
 
 function Home() {
@@ -12,9 +14,11 @@ function Home() {
  
   return (
     <div>
+      <Navbar />
       <Header />
       <Slide imageArrayProps={movies}/>
       <Content />
+      <Footer />
     </div>
   );
 }
