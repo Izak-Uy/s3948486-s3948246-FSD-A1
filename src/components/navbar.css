@@ -30,3 +30,7 @@
 .navbar ul li:hover {
     background-color: #CEC3FA;
 }
+
+.hidden-element {
+    padding-bottom: 110px;
+}

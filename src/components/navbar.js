@@ -11,7 +11,13 @@ const Navbar=()=> {
                     <li>
                         <a href="#">About Us</a>
                     </li>
+                    <li>
+                        <a href="/signup">Sign Up</a>
+                    </li>
                 </ul>
+            </div>
+            <div className='hidden-element'>
+                <a name='top'></a>
             </div>
         </div>
     )
