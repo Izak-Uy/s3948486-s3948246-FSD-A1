@@ -1,3 +1,8 @@
+.content-wrapper {
+    display: block;
+    margin: -10px;
+}
+
 .releases {
     background: #42416E;
 }
@@ -6,26 +11,12 @@
     padding-top: 2%;
     padding-bottom: 2%;
     font-family: 'Outward';
-    font-size: 60px;
+    font-size: 100px;
     color: white;
 }
 
 .content-container {
-    /* display: grid; */
-    /* grid-template-columns: 1fr 1fr; */
-    /* gap: 0; */
-
-    /* text-align: center; */
-    /* line-height: 0; */
-
-    /* line-height: 0;       
-    -webkit-column-count: 2;    
-    -webkit-column-gap: 0px;    
-    -moz-column-count: 2;
-    -moz-column-gap: 0px;
-    column-count: 2;    
-    column-gap: 0px; */
-
+    
     display:flex;   
     flex-wrap: wrap; 
     margin-right: auto;    
@@ -44,24 +35,37 @@
     width: 25%;
     background: rgb(2,0,36);
     background: linear-gradient(90deg, rgba(2,0,36,1) 10%, rgba(66,65,110,1) 50%, rgb(2,0,36,1) 90%);
-    /* margin: auto; */
-    /* clear: left; */
+    
 }
 
 .movie-slot-container img {
     width: 100%;
     height: auto;
-    /* object-fit: cover;
-    display: block; */
     
-    /* line-height: 0;
-    -webkit-column-count: 2;
-    -webkit-column-gap: 0px;
-    -moz-column-count: 2;
-    -moz-column-gap: 0;
-    column-count: 2;
-    column-gap: 0px; */
+}
+
+.about-us {
+    /* background: #43416e; */
+}
+
+.about-us-text h1 {
+    text-align: center;
+    font-family: 'Outward';
+    font-size: 100px;
+    background: #42416E;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    margin: 0;
+}
+
+.p-text {
+    padding: 5%;
+    font-size: 25px;
     
+    color: white;
+    letter-spacing: 2px;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 10%, rgba(66,65,110,1) 50%, rgb(2,0,36,1) 90%);
 }
 
 @font-face {
