@@ -1,0 +1,23 @@
+
+.signup-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.signup-form {
+    background-color: lightgray;
+    border-radius: 10px;
+    padding: 2em;
+}
+
+.hidden-element {
+    padding-bottom: 0px;
+}
+
+label {
+    font-weight: bold;
+    font-size: 25px;
+}
