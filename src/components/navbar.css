@@ -34,3 +34,7 @@
 .hidden-element {
     padding-bottom: 110px;
 }
+
+.nav-link-right {
+    margin-left: auto;
+}
