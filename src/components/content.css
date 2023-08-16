@@ -18,15 +18,16 @@
     /* text-align: center; */
     /* line-height: 0; */
 
-    line-height: 0;       
+    /* line-height: 0;       
     -webkit-column-count: 2;    
     -webkit-column-gap: 0px;    
     -moz-column-count: 2;
     -moz-column-gap: 0px;
     column-count: 2;    
-    column-gap: 0px;
+    column-gap: 0px; */
 
-    display:inline-block;    
+    display:flex;   
+    flex-wrap: wrap; 
     margin-right: auto;    
     margin-left: auto; 
 }
@@ -40,7 +41,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    clear: left;
+    width: 25%;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 10%, rgba(66,65,110,1) 50%, rgb(2,0,36,1) 90%);
+    /* margin: auto; */
+    /* clear: left; */
 }
 
 .movie-slot-container img {
