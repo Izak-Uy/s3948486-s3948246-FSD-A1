@@ -1,12 +1,16 @@
 import './Signup.css'
 import Navbar from "../components/navbar";
 
+
+
 function Signup() {
   return (
     <div>
       <Navbar scrollTop={false}/>
       <div className="signup-wrapper">
-        <h1> Sign Up</h1>
+        <div className="signup-header">
+          <h1>Sign Up</h1>
+        </div>
         <div className="signup-form">
           <form>
             <div className="form-email">
@@ -29,6 +33,7 @@ function Signup() {
                 <input type="password" placeholder="Enter password" />
               </label>
             </div>
+            <input type="submit" value="Submit" />
           </form>
         </div>
       </div>
