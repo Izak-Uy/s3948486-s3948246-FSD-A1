@@ -23,7 +23,7 @@ const Content =({imageArrayProps})=> {
                         </div>
                         <div className='movie-slot-container'>
                             <img
-                                src='https://variety.com/wp-content/uploads/2023/04/Fs3zzy_aMAAyCNC.jpeg?w=800'
+                                src='https://i.ebayimg.com/images/g/evYAAOSwszlkv5z3/s-l1600.jpg'
                             ></img>
                         </div>
                         <div className='movie-slot-container'>

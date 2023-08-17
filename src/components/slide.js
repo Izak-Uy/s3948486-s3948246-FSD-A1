@@ -5,7 +5,7 @@ const Slide =({imageArrayProps})=> {
     
     const imageArray = imageArrayProps;
     const [currIndex, setIndex] = React.useState(0);
-    const delay = 2500;
+    const delay = 6000;
 
     React.useEffect(() => {
         const interval = setInterval(
