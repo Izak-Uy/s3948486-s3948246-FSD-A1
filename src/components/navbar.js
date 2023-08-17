@@ -28,4 +28,6 @@ const Navbar=({scrollTop})=> {
     )
 }
 
+Navbar.defaultProps={scrollTop: true}
+
 export default Navbar
