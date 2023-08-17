@@ -1,12 +1,10 @@
 import './Signup.css'
 import Navbar from "../components/navbar";
-import Footer from "../components/footer";
-import Header from "../components/header";
 
 function Signup() {
   return (
     <div>
-      <Navbar />
+      <Navbar scrollTop={false}/>
       <div className="signup-wrapper">
         <h1> Sign Up</h1>
         <div className="signup-form">

@@ -1,6 +1,6 @@
 import './navbar.css'
 
-const Navbar=()=> {
+const Navbar=({scrollTop})=> {
     return (
         <div className='navbar-container'>    
             <div className="navbar">
@@ -19,11 +19,15 @@ const Navbar=()=> {
                     </li>
                 </ul>
             </div>
+            {scrollTop ?
             <div className='hidden-element'>
                 <a name='top'></a>
             </div>
+            : null}
         </div>
     )
 }
+
+Navbar.defaultProps={scrollTop: true}
 
 export default Navbar
