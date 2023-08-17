@@ -15,7 +15,7 @@ function Home() {
   
   return (
     <div>
-      <Navbar />
+      <Navbar scrollTop={true}/>
       <Header />
       <Slide imageArrayProps={moviesImgs}/>
       <Content imageArrayProps={moviesImgs}/>
