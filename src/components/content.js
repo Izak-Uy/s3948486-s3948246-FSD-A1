@@ -1,8 +1,11 @@
+import { useState } from 'react'
+import { Image, Button } from "react-bootstrap";
 import './content.css'
 
 const Content =({imageArrayProps})=> {
 
-    const imageArray = imageArrayProps;
+    // const imageArray = imageArrayProps;
+    const [isHovered, setHover] = useState(false);
 
     return (
         <div className='content-wrapper'>
@@ -10,11 +13,45 @@ const Content =({imageArrayProps})=> {
                 <div className='content-header'> New Releases</div>
                 {/* {imageArray.map((MovImg, index) => ( */}
                     <div className='content-container'>
-                        <div className='movie-slot-container'>
-                            <img
+                        <div 
+                            className='movie-slot-container'
+                            onMouseOver={() => setHover(true)}
+                            onMouseLeave={() => setHover(false)}
+                        >
+                            <Image
                                 // key = {index}
-                                src= "https://www.hollywoodreporter.com/wp-content/uploads/2022/07/Oppenheimer-Movie-Poster-Universal-Publicity-EMBED-2022-.jpg?w=1000"
-                            ></img>
+                                src= "https://www.hollywoodreporter.com/wp-content/uploads/2022/07/Oppenheimer-Movie-Poster-Universal-Publicity-EMBED-2022-.jpg?w=1000"/>
+                                {isHovered && (
+                                    <>
+                                        <img 
+                                            src="age-rating-icons/R.svg"
+                                            style={{
+                                                position: "absolute",
+                                                width: "25%",
+                                                top: "60%",
+                                                // innerHeight: "50%"
+                                            }}
+                                        ></img>
+                                        <Button
+                                            className='mov-button'
+                                            size="sm"
+                                            style={{
+                                                position: "absolute",
+                                                top: "85%",
+                                                left: "0",
+                                                right: "0",
+                                                transform: "translateY(-85%)",
+                                                margin: "auto",
+                                                maxWidth: "7em",
+                                                backgroundColor: "#42416E",
+                                                outline: "none",
+                                            }}
+                                            variant="primary"
+                                        >
+                                            View Movie
+                                        </Button>
+                                    </>
+                                )}
                         </div>
                         <div className='movie-slot-container'>
                             <img

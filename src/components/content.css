@@ -30,22 +30,24 @@
 
 .movie-slot-container {
     display: flex;
+    position: relative;
     justify-content: center;
     align-items: center;
     width: 25%;
     background: rgb(2,0,36);
     background: linear-gradient(90deg, rgba(2,0,36,1) 10%, rgba(66,65,110,1) 50%, rgb(2,0,36,1) 90%);
-    
+}
+
+.movie-slot-container:hover {
+    transform: scale(1.1);
+    overflow: hidden;
+    z-index: 5;
 }
 
 .movie-slot-container img {
     width: 100%;
     height: auto;
     
-}
-
-.about-us {
-    /* background: #43416e; */
 }
 
 .about-us-text h1 {
