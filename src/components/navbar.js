@@ -3,7 +3,7 @@ import './navbar.css'
 const Navbar=({scrollTop})=> {
     return (
         <div className='navbar-container'>    
-            <div className="navbar">
+            <div className="navbar-nobootstrap">
                 <ul>
                     <li>
                         <a href="/">Home</a>

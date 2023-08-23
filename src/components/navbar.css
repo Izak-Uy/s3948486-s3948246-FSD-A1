@@ -1,4 +1,4 @@
-.navbar {
+.navbar-nobootstrap {
     background-color: #EAEAEA;
     /* padding: 20px; */
     color: black;
@@ -9,25 +9,25 @@
     z-index: 10;
 }
 
-.navbar ul {
+.navbar-nobootstrap ul {
     text-align: center;
     margin: 0;
     display: flex;
 }
 
-.navbar ul li {
+.navbar-nobootstrap ul li {
     /* padding: 20px; */
     /* line-height: 10em; */
     display: flex;
     list-style: none;
 }
 
-.navbar ul li a {
+.navbar-nobootstrap ul li a {
     text-decoration: none;
     padding: 45px;
 }
 
-.navbar ul li:hover {
+.navbar-nobootstrap ul li:hover {
     background-color: #CEC3FA;
 }
 
@@ -35,6 +35,6 @@
     padding-bottom: 110px;
 }
 
-.nav-link-right {
+li.nav-link-right {
     margin-left: auto;
 }
