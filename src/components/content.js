@@ -6,6 +6,9 @@ const Content =({imageArrayProps})=> {
 
     // const imageArray = imageArrayProps;
     const [isHovered, setHover] = useState(false);
+    const [isHovered1, setHover1] = useState(false);
+    const [isHovered2, setHover2] = useState(false);
+    const [isHovered3, setHover3] = useState(false);
 
     return (
         <div className='content-wrapper'>
@@ -53,20 +56,122 @@ const Content =({imageArrayProps})=> {
                                     </>
                                 )}
                         </div>
-                        <div className='movie-slot-container'>
-                            <img
-                                src='https://m.media-amazon.com/images/I/61FsQdm0-ML._AC_UF894,1000_QL80_.jpg'
-                            ></img>
+                        <div 
+                            className='movie-slot-container'
+                            onMouseOver={() => setHover1(true)}
+                            onMouseLeave={() => setHover1(false)}
+                        >
+                            <Image
+                                src='https://m.media-amazon.com/images/I/61FsQdm0-ML._AC_UF894,1000_QL80_.jpg'/>
+                                {isHovered1 && (
+                                    <>
+                                        <img 
+                                            src="age-rating-icons/R.svg"
+                                            style={{
+                                                position: "absolute",
+                                                width: "25%",
+                                                top: "60%",
+                                                // innerHeight: "50%"
+                                            }}
+                                        ></img>
+                                        <Button
+                                            className='mov-button'
+                                            size="sm"
+                                            style={{
+                                                position: "absolute",
+                                                top: "85%",
+                                                left: "0",
+                                                right: "0",
+                                                transform: "translateY(-85%)",
+                                                margin: "auto",
+                                                maxWidth: "7em",
+                                                backgroundColor: "#42416E",
+                                                outline: "none",
+                                            }}
+                                            variant="primary"
+                                        >
+                                            View Movie
+                                        </Button>
+                                    </>
+                                )}
                         </div>
-                        <div className='movie-slot-container'>
-                            <img
-                                src='https://i.ebayimg.com/images/g/evYAAOSwszlkv5z3/s-l1600.jpg'
-                            ></img>
+                        <div 
+                            className='movie-slot-container'
+                            onMouseOver={() => setHover2(true)}
+                            onMouseLeave={() => setHover2(false)}
+                        >
+                            <Image
+                                src='https://i.ebayimg.com/images/g/evYAAOSwszlkv5z3/s-l1600.jpg'/>
+                                {isHovered2 && (
+                                    <>
+                                        <img 
+                                            src="age-rating-icons/R.svg"
+                                            style={{
+                                                position: "absolute",
+                                                width: "25%",
+                                                top: "60%",
+                                                // innerHeight: "50%"
+                                            }}
+                                        ></img>
+                                        <Button
+                                            className='mov-button'
+                                            size="sm"
+                                            style={{
+                                                position: "absolute",
+                                                top: "85%",
+                                                left: "0",
+                                                right: "0",
+                                                transform: "translateY(-85%)",
+                                                margin: "auto",
+                                                maxWidth: "7em",
+                                                backgroundColor: "#42416E",
+                                                outline: "none",
+                                            }}
+                                            variant="primary"
+                                        >
+                                            View Movie
+                                        </Button>
+                                    </>
+                                )}
                         </div>
-                        <div className='movie-slot-container'>
-                            <img
-                                src='https://m.media-amazon.com/images/M/MV5BN2YyZjQ0NTEtNzU5MS00NGZkLTg0MTEtYzJmMWY3MWRhZjM2XkEyXkFqcGdeQXVyMDA4NzMyOA@@._V1_FMjpg_UX1000_.jpg'
-                            ></img>
+                        <div 
+                            className='movie-slot-container'
+                            onMouseOver={() => setHover3(true)}
+                            onMouseLeave={()=> setHover3(false)}
+                        >
+                            <Image
+                                src='https://m.media-amazon.com/images/M/MV5BN2YyZjQ0NTEtNzU5MS00NGZkLTg0MTEtYzJmMWY3MWRhZjM2XkEyXkFqcGdeQXVyMDA4NzMyOA@@._V1_FMjpg_UX1000_.jpg'/>
+                                {isHovered3 && (
+                                    <>
+                                        <img 
+                                            src="age-rating-icons/R.svg"
+                                            style={{
+                                                position: "absolute",
+                                                width: "25%",
+                                                top: "60%",
+                                                // innerHeight: "50%"
+                                            }}
+                                        ></img>
+                                        <Button
+                                            className='mov-button'
+                                            size="sm"
+                                            style={{
+                                                position: "absolute",
+                                                top: "85%",
+                                                left: "0",
+                                                right: "0",
+                                                transform: "translateY(-85%)",
+                                                margin: "auto",
+                                                maxWidth: "7em",
+                                                backgroundColor: "#42416E",
+                                                outline: "none",
+                                            }}
+                                            variant="primary"
+                                        >
+                                            View Movie
+                                        </Button>
+                                    </>
+                                )}
                         </div>
                     </div>
                 {/* ))} */}
