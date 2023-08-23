@@ -9,13 +9,17 @@
 
 .signup-header {
     width: 30vw;
-    padding: 0em 2rem;
+    padding: 0.8em 2rem;
     background-color: #CEC3FA;
     text-align: center;
     border-radius: 10px;
     font-family: "Outward";
     letter-spacing: 5px;
     font-size: 32px;
+}
+.signup-header h1 {
+    margin: 0;
+    padding: 0;
 }
 
 .signup-form {
@@ -24,8 +28,6 @@
     padding: 2rem;
     width: 30vw;
 }
-
-
 
 form {
     display: flex;
@@ -41,6 +43,7 @@ form div {
 label {
     font-weight: bold;
     font-size: 16px;
+    width: 100%;
 }
 
 input {

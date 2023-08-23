@@ -9,10 +9,10 @@ const Navbar=({scrollTop})=> {
                         <a href="/">Home</a>
                     </li>
                     <li>
-                        <a href="#">Movies</a>
+                        <a href="/">Movies</a>
                     </li>
                     <li>
-                        <a href="#">About Us</a>
+                        <a href="/">About Us</a>
                     </li>
                     <li className='nav-link-right'>
                         <a href="/signup">Sign Up</a>
@@ -21,7 +21,7 @@ const Navbar=({scrollTop})=> {
             </div>
             {scrollTop ?
             <div className='hidden-element'>
-                <a name='top'></a>
+                <p name='top'></p>
             </div>
             : null}
         </div>
