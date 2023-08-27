@@ -1,33 +1,36 @@
-import './navbar.css'
+import "./navbar.css";
 
-const Navbar=({scrollTop})=> {
-    return (
-        <div className='navbar-container'>    
-            <div className="navbar-nobootstrap">
-                <ul>
-                    <li>
-                        <a href="/">Home</a>
-                    </li>
-                    <li>
-                        <a href="/">Movies</a>
-                    </li>
-                    <li>
-                        <a href="/">About Us</a>
-                    </li>
-                    <li className='nav-link-right'>
-                        <a href="/signup">Sign Up</a>
-                    </li>
-                </ul>
-            </div>
-            {scrollTop ?
-            <div className='hidden-element'>
-                <p name='top'></p>
-            </div>
-            : null}
+const Navbar = ({ scrollTop }) => {
+  return (
+    <div className="navbar-container">
+      <div className="navbar-nobootstrap">
+        <ul>
+          <li>
+            <a href="/">Home</a>
+          </li>
+          <li>
+            <a href="/">Movies</a>
+          </li>
+          <li>
+            <a href="/">About Us</a>
+          </li>
+          <li className="nav-link-right">
+            <a href="/signup">Sign Up</a>
+          </li>
+          <li className="nav-also-right">
+            <a href="/signin">Sign In</a>
+          </li>
+        </ul>
+      </div>
+      {scrollTop ? (
+        <div className="hidden-element">
+          <p name="top"></p>
         </div>
-    )
-}
+      ) : null}
+    </div>
+  );
+};
 
-Navbar.defaultProps={scrollTop: true}
+Navbar.defaultProps = { scrollTop: true };
 
-export default Navbar
+export default Navbar;
