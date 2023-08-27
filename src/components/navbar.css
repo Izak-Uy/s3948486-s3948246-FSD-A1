@@ -20,7 +20,7 @@
   padding: 0%;
 }
 
-.li-logo img{
+.li-logo img {
   height: 114px;
   object-fit: cover;
 }
@@ -33,10 +33,16 @@
 }
 
 .navbar-nobootstrap ul li a,
+.navbar-nobootstrap ul li button,
 .nav-username {
   text-decoration: none;
   padding: 45px;
   color: #42416e;
+  border: 0;
+  background: none;
+  box-shadow: none;
+  border-radius: 0px;
+  font-weight: bold;
 }
 
 .navbar-nobootstrap ul li:hover {
