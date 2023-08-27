@@ -26,6 +26,64 @@ const Content =({imageArrayProps})=> {
                                 src= "https://www.hollywoodreporter.com/wp-content/uploads/2022/07/Oppenheimer-Movie-Poster-Universal-Publicity-EMBED-2022-.jpg?w=1000"/>
                                 {isHovered && (
                                     <>
+                                        <div 
+                                            className='mov-sesh-time-box'
+                                            style={{
+                                                display: "grid",
+                                                position: "absolute",
+                                                gridTemplateColumns: "1fr 1fr 1fr",
+                                                columnGap: "25px",
+                                            }}
+                                            > 
+                                            <div
+                                                className='mov-sesh-time'
+                                                style={{
+                                                    // position: "absolute",
+                                                    top: "40%",
+                                                    width: "100px",
+                                                    backgroundColor: "#42416E",
+                                                    textAlign: "center",
+                                                    fontFamily: "Outward",
+                                                    fontSize: "20px",
+                                                    color: "white",
+                                                    borderRadius: "20px"
+                                                }}
+                                                >
+                                                6:45 PM
+                                            </div>
+                                            <div
+                                                className='mov-sesh-time'
+                                                style={{
+                                                    // position: "absolute",
+                                                    top: "40%",
+                                                    width: "100px",
+                                                    backgroundColor: "#42416E",
+                                                    textAlign: "center",
+                                                    fontFamily: "Outward",
+                                                    fontSize: "20px",
+                                                    color: "white",
+                                                    borderRadius: "20px"
+                                                }}
+                                                >
+                                                7:30 PM
+                                            </div>
+                                            <div
+                                                className='mov-sesh-time'
+                                                style={{
+                                                    // position: "absolute",
+                                                    top: "40%",
+                                                    width: "100px",
+                                                    backgroundColor: "#42416E",
+                                                    textAlign: "center",
+                                                    fontFamily: "Outward",
+                                                    fontSize: "20px",
+                                                    color: "white",
+                                                    borderRadius: "20px"
+                                                }}
+                                                >
+                                                9:00 PM
+                                            </div>
+                                        </div>
                                         <img 
                                             src="age-rating-icons/R.svg"
                                             style={{
@@ -64,7 +122,65 @@ const Content =({imageArrayProps})=> {
                             <Image
                                 src='https://m.media-amazon.com/images/I/61FsQdm0-ML._AC_UF894,1000_QL80_.jpg'/>
                                 {isHovered1 && (
-                                    <>
+                                    <>  
+                                        <div 
+                                            className='mov-sesh-time-box'
+                                            style={{
+                                                display: "grid",
+                                                position: "absolute",
+                                                gridTemplateColumns: "1fr 1fr 1fr",
+                                                columnGap: "25px",
+                                            }}
+                                            > 
+                                            <div
+                                                className='mov-sesh-time'
+                                                style={{
+                                                    // position: "absolute",
+                                                    top: "40%",
+                                                    width: "100px",
+                                                    backgroundColor: "#42416E",
+                                                    textAlign: "center",
+                                                    fontFamily: "Outward",
+                                                    fontSize: "20px",
+                                                    color: "white",
+                                                    borderRadius: "20px"
+                                                }}
+                                                >
+                                                6:45 PM
+                                            </div>
+                                            <div
+                                                className='mov-sesh-time'
+                                                style={{
+                                                    // position: "absolute",
+                                                    top: "40%",
+                                                    width: "100px",
+                                                    backgroundColor: "#42416E",
+                                                    textAlign: "center",
+                                                    fontFamily: "Outward",
+                                                    fontSize: "20px",
+                                                    color: "white",
+                                                    borderRadius: "20px"
+                                                }}
+                                                >
+                                                7:30 PM
+                                            </div>
+                                            <div
+                                                className='mov-sesh-time'
+                                                style={{
+                                                    // position: "absolute",
+                                                    top: "40%",
+                                                    width: "100px",
+                                                    backgroundColor: "#42416E",
+                                                    textAlign: "center",
+                                                    fontFamily: "Outward",
+                                                    fontSize: "20px",
+                                                    color: "white",
+                                                    borderRadius: "20px"
+                                                }}
+                                                >
+                                                9:00 PM
+                                            </div>
+                                        </div>
                                         <img 
                                             src="age-rating-icons/R.svg"
                                             style={{
@@ -104,6 +220,64 @@ const Content =({imageArrayProps})=> {
                                 src='https://i.ebayimg.com/images/g/evYAAOSwszlkv5z3/s-l1600.jpg'/>
                                 {isHovered2 && (
                                     <>
+                                        <div 
+                                            className='mov-sesh-time-box'
+                                            style={{
+                                                display: "grid",
+                                                position: "absolute",
+                                                gridTemplateColumns: "1fr 1fr 1fr",
+                                                columnGap: "25px",
+                                            }}
+                                            > 
+                                            <div
+                                                className='mov-sesh-time'
+                                                style={{
+                                                    // position: "absolute",
+                                                    top: "40%",
+                                                    width: "100px",
+                                                    backgroundColor: "#42416E",
+                                                    textAlign: "center",
+                                                    fontFamily: "Outward",
+                                                    fontSize: "20px",
+                                                    color: "white",
+                                                    borderRadius: "20px"
+                                                }}
+                                                >
+                                                6:45 PM
+                                            </div>
+                                            <div
+                                                className='mov-sesh-time'
+                                                style={{
+                                                    // position: "absolute",
+                                                    top: "40%",
+                                                    width: "100px",
+                                                    backgroundColor: "#42416E",
+                                                    textAlign: "center",
+                                                    fontFamily: "Outward",
+                                                    fontSize: "20px",
+                                                    color: "white",
+                                                    borderRadius: "20px"
+                                                }}
+                                                >
+                                                7:30 PM
+                                            </div>
+                                            <div
+                                                className='mov-sesh-time'
+                                                style={{
+                                                    // position: "absolute",
+                                                    top: "40%",
+                                                    width: "100px",
+                                                    backgroundColor: "#42416E",
+                                                    textAlign: "center",
+                                                    fontFamily: "Outward",
+                                                    fontSize: "20px",
+                                                    color: "white",
+                                                    borderRadius: "20px"
+                                                }}
+                                                >
+                                                9:00 PM
+                                            </div>
+                                        </div>
                                         <img 
                                             src="age-rating-icons/R.svg"
                                             style={{
@@ -143,6 +317,64 @@ const Content =({imageArrayProps})=> {
                                 src='https://m.media-amazon.com/images/M/MV5BN2YyZjQ0NTEtNzU5MS00NGZkLTg0MTEtYzJmMWY3MWRhZjM2XkEyXkFqcGdeQXVyMDA4NzMyOA@@._V1_FMjpg_UX1000_.jpg'/>
                                 {isHovered3 && (
                                     <>
+                                        <div 
+                                            className='mov-sesh-time-box'
+                                            style={{
+                                                display: "grid",
+                                                position: "absolute",
+                                                gridTemplateColumns: "1fr 1fr 1fr",
+                                                columnGap: "25px",
+                                            }}
+                                            > 
+                                            <div
+                                                className='mov-sesh-time'
+                                                style={{
+                                                    // position: "absolute",
+                                                    top: "40%",
+                                                    width: "100px",
+                                                    backgroundColor: "#42416E",
+                                                    textAlign: "center",
+                                                    fontFamily: "Outward",
+                                                    fontSize: "20px",
+                                                    color: "white",
+                                                    borderRadius: "20px"
+                                                }}
+                                                >
+                                                6:45 PM
+                                            </div>
+                                            <div
+                                                className='mov-sesh-time'
+                                                style={{
+                                                    // position: "absolute",
+                                                    top: "40%",
+                                                    width: "100px",
+                                                    backgroundColor: "#42416E",
+                                                    textAlign: "center",
+                                                    fontFamily: "Outward",
+                                                    fontSize: "20px",
+                                                    color: "white",
+                                                    borderRadius: "20px"
+                                                }}
+                                                >
+                                                7:30 PM
+                                            </div>
+                                            <div
+                                                className='mov-sesh-time'
+                                                style={{
+                                                    // position: "absolute",
+                                                    top: "40%",
+                                                    width: "100px",
+                                                    backgroundColor: "#42416E",
+                                                    textAlign: "center",
+                                                    fontFamily: "Outward",
+                                                    fontSize: "20px",
+                                                    color: "white",
+                                                    borderRadius: "20px"
+                                                }}
+                                                >
+                                                9:00 PM
+                                            </div>
+                                        </div>
                                         <img 
                                             src="age-rating-icons/R.svg"
                                             style={{
