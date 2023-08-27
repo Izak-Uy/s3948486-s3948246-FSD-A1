@@ -1,6 +1,6 @@
 import "./Login.css";
 import Navbar from "../components/navbar";
-import useForm from "../hooks/useForm";
+import { useForm } from "../hooks/useForm";
 import { loginValidate } from "../validation/ValidationRules";
 import { setUser } from "../data/repository";
 import { useNavigate } from "react-router-dom";
@@ -14,10 +14,9 @@ function Login({ loginUser }) {
   const navigate = useNavigate();
 
   function login() {
-    alert("Login successful");
     setUser(values.email);
     loginUser(values.email);
-    navigate("/");
+    navigate("/profile");
   }
 
   return (

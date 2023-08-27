@@ -11,6 +11,18 @@ function addLogin(email, password, date) {
   localStorage.setItem(LOGINS_KEY, JSON.stringify(logins));
 }
 
+function updateLogin(email, new_email, new_password) {
+  const logins = getLogins();
+  if (!logins) {
+    return;
+  }
+  const check_email = (login) => login.email === email;
+  const i = logins.findIndex(check_email);
+  logins[i].email = new_email;
+  logins[i].password = new_password;
+  localStorage.setItem(LOGINS_KEY, JSON.stringify(logins));
+}
+
 function verifyLogin(email, password) {
   const logins = getLogins();
   if (!logins) {
@@ -72,4 +84,5 @@ export {
   getUser,
   removeUser,
   getUserLogin,
+  updateLogin,
 };

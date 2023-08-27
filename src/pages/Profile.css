@@ -1,0 +1,106 @@
+.profile-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.profile-header {
+  width: 40vw;
+  padding: 0.8em 2rem;
+  background-color: #cec3fa;
+  text-align: center;
+  border-radius: 10px;
+  font-family: "Outward";
+  letter-spacing: 5px;
+  font-size: 32px;
+}
+
+.profile-header h1 {
+  margin: 0;
+  padding: 0;
+}
+
+.profile-card {
+  background-color: lightgray;
+  border-radius: 10px;
+  padding: 2rem;
+  width: 40vw;
+}
+
+.profile-form form {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+  width: 100%;
+}
+
+.profile-form div {
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+.profile-edit-save {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.profile-details form div {
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+.edit-icon {
+  width: 1.5em;
+  height: 1.5em;
+  color: #4a4a4a;
+  margin-left: 1rem;
+  cursor: pointer;
+}
+
+.profile-details input {
+  width: auto;
+}
+
+.profile-details label {
+  width: 15%;
+}
+
+hr {
+  width: 100%;
+  margin: 1rem 0;
+}
+
+.profile-details input:not([type="submit"]) {
+  width: 70%;
+  margin-left: 1em;
+}
+
+.profile-extras {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 2em;
+}
+
+.profile-delete {
+  background-color: #f07474;
+  color: black;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 0.5em 1em;
+  margin-top: 1em;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.delete-icon {
+  width: 1.5em;
+  height: 1.5em;
+  margin-right: 1em;
+}

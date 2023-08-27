@@ -33,7 +33,13 @@ function App() {
         <Route
           exact
           path="/profile"
-          element={<Profile username={username} logoutUser={logoutUser} />}
+          element={
+            <Profile
+              username={username}
+              logoutUser={logoutUser}
+              loginUser={loginUser}
+            />
+          }
         />
       </Routes>
     </Router>

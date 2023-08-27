@@ -1,6 +1,6 @@
 import "./Signup.css";
 import Navbar from "../components/navbar";
-import useForm from "../hooks/useForm";
+import { useForm } from "../hooks/useForm";
 import { signupValidate } from "../validation/ValidationRules";
 import { addLogin } from "../data/repository";
 import { useNavigate } from "react-router-dom";
@@ -15,6 +15,7 @@ function Signup() {
   function signup() {
     const date = new Date();
     addLogin(values.email, values.password, date.toDateString());
+    alert("Account created successfully! Please log in.");
     navigate("/login");
   }
 
@@ -69,7 +70,7 @@ function Signup() {
                 <input
                   className={`input ${errors.passwordConfirm && "is-danger"}`}
                   type="password"
-                  placeholder="Enter password"
+                  placeholder="Confirm password"
                   name="passwordConfirm"
                   onChange={handleChange}
                   value={values.passwordConfirm || ""}
@@ -81,6 +82,18 @@ function Signup() {
                   </p>
                 )}
               </label>
+            </div>
+            <div className="password-requirements">
+              <em>
+                Your password must contain:
+                <ul>
+                  <li>8 or more characters</li>
+                  <li>At least one uppercase letter</li>
+                  <li>At least one lowercase letter</li>
+                  <li>At least one special character</li>
+                  <li>At least one number</li>
+                </ul>
+              </em>
             </div>
             <input type="submit" value="Submit" />
           </form>

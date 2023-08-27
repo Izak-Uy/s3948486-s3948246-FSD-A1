@@ -28,7 +28,7 @@
   width: 30vw;
 }
 
-form {
+.signup-form form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -83,4 +83,10 @@ p.is-danger {
   src: url(/public/Akira-Expanded-Demo.otf);
   font-weight: normal;
   font-style: normal;
+}
+
+.password-requirements {
+  font-size: 12px;
+  margin: 0;
+  padding: 0;
 }
