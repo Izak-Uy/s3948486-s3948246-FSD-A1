@@ -203,6 +203,18 @@ function Profile({ username, logoutUser, loginUser }) {
                       </p>
                     )}
                   </label>
+                  <div className="password-requirements">
+                    <em>
+                      Your password must contain:
+                      <ul>
+                        <li>8 or more characters</li>
+                        <li>At least one uppercase letter</li>
+                        <li>At least one lowercase letter</li>
+                        <li>At least one special character</li>
+                        <li>At least one number</li>
+                      </ul>
+                    </em>
+                  </div>
                 </div>
                 <div className="profile-edit-save">
                   <input
