@@ -7,6 +7,7 @@ import Profile from "./pages/Profile";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { getUser, removeUser } from "./data/repository";
 import { useState } from "react";
+import Movie from "./pages/movie";
 
 function App() {
   const [username, setUsername] = useState(getUser());
@@ -41,6 +42,10 @@ function App() {
             />
           }
         />
+        <Route 
+          exact 
+          path="/movie" 
+          element={<Movie username={username} logoutUser={logoutUser} />} />
       </Routes>
     </Router>
   );
