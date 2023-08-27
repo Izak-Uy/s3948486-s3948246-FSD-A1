@@ -5,13 +5,13 @@ function getLogins() {
   return JSON.parse(localStorage.getItem(LOGINS_KEY));
 }
 
-function addLogin(email, password, date) {
+function addLogin(email, password, name, date) {
   const logins = getLogins() || [];
-  logins.push({ email, password, date });
+  logins.push({ email, password, name, date });
   localStorage.setItem(LOGINS_KEY, JSON.stringify(logins));
 }
 
-function updateLogin(email, new_email, new_password) {
+function updateLogin(email, new_email, name, new_password) {
   const logins = getLogins();
   if (!logins) {
     return;
@@ -19,6 +19,7 @@ function updateLogin(email, new_email, new_password) {
   const check_email = (login) => login.email === email;
   const i = logins.findIndex(check_email);
   logins[i].email = new_email;
+  logins[i].name = name;
   logins[i].password = new_password;
   localStorage.setItem(LOGINS_KEY, JSON.stringify(logins));
 }

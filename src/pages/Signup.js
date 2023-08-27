@@ -2,10 +2,10 @@ import "./Signup.css";
 import Navbar from "../components/navbar";
 import { useForm } from "../hooks/useForm";
 import { signupValidate } from "../validation/ValidationRules";
-import { addLogin } from "../data/repository";
+import { addLogin, setUser } from "../data/repository";
 import { useNavigate } from "react-router-dom";
 
-function Signup() {
+function Signup({ loginUser }) {
   const { values, errors, handleChange, handleSubmit } = useForm(
     signup,
     signupValidate
@@ -14,9 +14,10 @@ function Signup() {
 
   function signup() {
     const date = new Date();
-    addLogin(values.email, values.password, date.toDateString());
-    alert("Account created successfully! Please log in.");
-    navigate("/login");
+    addLogin(values.email, values.password, values.name, date.toDateString());
+    setUser(values.email);
+    loginUser(values.email);
+    navigate("/profile");
   }
 
   return (
@@ -28,6 +29,24 @@ function Signup() {
         </div>
         <div className="signup-form">
           <form onSubmit={handleSubmit} noValidate>
+            <div className="form-name">
+              <label className="field-title">
+                Name:
+                <br />
+                <input
+                  className={`input ${errors.name && "is-danger"}`}
+                  type="text"
+                  placeholder="Enter name"
+                  name="name"
+                  onChange={handleChange}
+                  value={values.name || ""}
+                  required
+                />
+                {errors.name && (
+                  <p className="error-message is-danger">{errors.name}</p>
+                )}
+              </label>
+            </div>
             <div className="form-email">
               <label className="field-title">
                 Email:

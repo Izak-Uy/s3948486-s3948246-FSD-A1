@@ -29,7 +29,11 @@ function App() {
           path="/"
           element={<Home username={username} logoutUser={logoutUser} />}
         />
-        <Route exact path="/signup" element={<Signup />} />
+        <Route
+          exact
+          path="/signup"
+          element={<Signup loginUser={loginUser} />}
+        />
         <Route exact path="/login" element={<Login loginUser={loginUser} />} />
         <Route
           exact
@@ -42,10 +46,11 @@ function App() {
             />
           }
         />
-        <Route 
-          exact 
-          path="/movie" 
-          element={<Movie username={username} logoutUser={logoutUser} />} />
+        <Route
+          exact
+          path="/movie"
+          element={<Movie username={username} logoutUser={logoutUser} />}
+        />
       </Routes>
     </Router>
   );

@@ -3,6 +3,10 @@ import { checkEmailExists, verifyLogin } from "../data/repository";
 function signupValidate(values) {
   let errors = {};
 
+  if (!values.name) {
+    errors.name = "Name is required";
+  }
+
   if (!values.email) {
     errors.email = "Email address is required";
   } else if (!/\S+@\S+\.\S+/.test(values.email)) {
@@ -93,9 +97,20 @@ function emailEditValidate(values) {
   return errors;
 }
 
+function nameEditValidate(values) {
+  let errors = {};
+
+  if (!values.name) {
+    errors.name = "Name is required";
+  }
+
+  return errors;
+}
+
 export {
   signupValidate,
   loginValidate,
   emailEditValidate,
   passwordEditValidate,
+  nameEditValidate,
 };
