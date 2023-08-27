@@ -1,6 +1,14 @@
 import "./navbar.css";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = ({ scrollTop, username, logoutUser }) => {
+  const navigate = useNavigate();
+
+  function logout() {
+    logoutUser();
+    navigate("/");
+  }
+
   return (
     <div className="navbar-container">
       <div className="navbar-nobootstrap">
@@ -26,13 +34,17 @@ const Navbar = ({ scrollTop, username, logoutUser }) => {
           ) : (
             <>
               <li className="nav-link-right">
-                <a className="nav-username">
-                  <img className="profile-icon" src="profile-user.png" />
-                  {username}
+                <a className="nav-username" href="/profile">
+                  <img
+                    className="profile-icon"
+                    src="profile-user.png"
+                    alt="Profile Icon"
+                  />
+                  {username.split("@")[0]}
                 </a>
               </li>
               <li className="nav-also-right">
-                <a href="/" onClick={logoutUser}>
+                <a href="/" onClick={logout}>
                   Sign Out
                 </a>
               </li>

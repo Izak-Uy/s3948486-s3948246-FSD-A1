@@ -6,10 +6,10 @@ const Footer = () => {
       <div className="footer-content">
         <ul>
           <li>
-            <a href="#">Movies</a>
+            <a href="/">Movies</a>
           </li>
           <li>
-            <a href="#">About Us</a>
+            <a href="/">About Us</a>
           </li>
           <li className="footer-link-right">
             <a href="#top">Back to top</a>

@@ -2,7 +2,7 @@ import "./Signup.css";
 import Navbar from "../components/navbar";
 import useForm from "../hooks/useForm";
 import { signupValidate } from "../validation/ValidationRules";
-import { addLogin, getLogins } from "../data/repository";
+import { addLogin } from "../data/repository";
 import { useNavigate } from "react-router-dom";
 
 function Signup() {
@@ -13,9 +13,9 @@ function Signup() {
   const navigate = useNavigate();
 
   function signup() {
-    addLogin(values.email, values.password, Date.toDateString());
+    const date = new Date();
+    addLogin(values.email, values.password, date.toDateString());
     navigate("/login");
-    console.log(getLogins());
   }
 
   return (

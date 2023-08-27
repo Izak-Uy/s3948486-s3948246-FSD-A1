@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
+import Profile from "./pages/Profile";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { getUser, removeUser } from "./data/repository";
 import { useState } from "react";
@@ -29,6 +30,11 @@ function App() {
         />
         <Route exact path="/signup" element={<Signup />} />
         <Route exact path="/login" element={<Login loginUser={loginUser} />} />
+        <Route
+          exact
+          path="/profile"
+          element={<Profile username={username} logoutUser={logoutUser} />}
+        />
       </Routes>
     </Router>
   );

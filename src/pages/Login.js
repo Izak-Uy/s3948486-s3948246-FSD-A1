@@ -10,13 +10,13 @@ function Login({ loginUser }) {
     login,
     loginValidate
   );
+
   const navigate = useNavigate();
 
   function login() {
     alert("Login successful");
-    let username = values.email.split("@")[0];
-    setUser(username);
-    loginUser(username);
+    setUser(values.email);
+    loginUser(values.email);
     navigate("/");
   }
 

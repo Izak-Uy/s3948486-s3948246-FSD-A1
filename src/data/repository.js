@@ -40,8 +40,8 @@ function removeLogin(email) {
   localStorage.setItem(LOGINS_KEY, JSON.stringify(new_logins));
 }
 
-function setUser(username) {
-  localStorage.setItem(USER_KEY, username);
+function setUser(email) {
+  localStorage.setItem(USER_KEY, email);
 }
 
 function getUser() {
@@ -50,6 +50,16 @@ function getUser() {
 
 function removeUser() {
   localStorage.removeItem(USER_KEY);
+}
+
+function getUserLogin(email) {
+  const logins = getLogins();
+  if (!logins) {
+    return;
+  }
+  const check_email = (login) => login.email === email;
+  const user = logins.find(check_email);
+  return user;
 }
 
 export {
@@ -61,4 +71,5 @@ export {
   setUser,
   getUser,
   removeUser,
+  getUserLogin,
 };
