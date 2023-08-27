@@ -23,7 +23,7 @@ function signupValidate(values) {
   return errors;
 }
 
-function signinValidate(values) {
+function loginValidate(values) {
   let errors = {};
 
   if (!values.email) {
@@ -38,7 +38,7 @@ function signinValidate(values) {
     errors.password = "Password is required";
   } else if (
     checkEmailExists(values.email) &&
-    verifyLogin(values.email, values.password)
+    !verifyLogin(values.email, values.password)
   ) {
     errors.password = "Password is incorrect";
   }
@@ -46,4 +46,4 @@ function signinValidate(values) {
   return errors;
 }
 
-export { signupValidate, signinValidate };
+export { signupValidate, loginValidate };

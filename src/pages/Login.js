@@ -1,31 +1,33 @@
-import "./Signup.css";
+import "./Login.css";
 import Navbar from "../components/navbar";
 import useForm from "../hooks/useForm";
-import { signupValidate } from "../validation/ValidationRules";
-import { addLogin, getLogins } from "../data/repository";
+import { loginValidate } from "../validation/ValidationRules";
+import { setUser } from "../data/repository";
 import { useNavigate } from "react-router-dom";
 
-function Signup() {
+function Login({ loginUser }) {
   const { values, errors, handleChange, handleSubmit } = useForm(
-    signup,
-    signupValidate
+    login,
+    loginValidate
   );
   const navigate = useNavigate();
 
-  function signup() {
-    addLogin(values.email, values.password, Date.toDateString());
-    navigate("/login");
-    console.log(getLogins());
+  function login() {
+    alert("Login successful");
+    let username = values.email.split("@")[0];
+    setUser(username);
+    loginUser(username);
+    navigate("/");
   }
 
   return (
     <div>
       <Navbar scrollTop={false} username={null} />
-      <div className="signup-wrapper">
-        <div className="signup-header">
-          <h1>Sign Up</h1>
+      <div className="login-wrapper">
+        <div className="login-header">
+          <h1>Sign In</h1>
         </div>
-        <div className="signup-form">
+        <div className="login-form">
           <form onSubmit={handleSubmit} noValidate>
             <div className="form-email">
               <label className="field-title">
@@ -62,25 +64,6 @@ function Signup() {
                   <p className="error-message is-danger">{errors.password}</p>
                 )}
               </label>
-              <br />
-              <label className="field-title">
-                Confirm Password:
-                <br />
-                <input
-                  className={`input ${errors.passwordConfirm && "is-danger"}`}
-                  type="password"
-                  placeholder="Enter password"
-                  name="passwordConfirm"
-                  onChange={handleChange}
-                  value={values.passwordConfirm || ""}
-                  required
-                />
-                {errors.passwordConfirm && (
-                  <p className="error-message is-danger">
-                    {errors.passwordConfirm}
-                  </p>
-                )}
-              </label>
             </div>
             <input type="submit" value="Submit" />
           </form>
@@ -90,4 +73,4 @@ function Signup() {
   );
 }
 
-export default Signup;
+export default Login;

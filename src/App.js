@@ -2,16 +2,33 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Signup from "./pages/Signup";
-import Signin from "./pages/Signin";
+import Login from "./pages/Login";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { getUser, removeUser } from "./data/repository";
+import { useState } from "react";
 
 function App() {
+  const [username, setUsername] = useState(getUser());
+
+  const loginUser = (username) => {
+    setUsername(username);
+  };
+
+  const logoutUser = () => {
+    removeUser();
+    setUsername(null);
+  };
+
   return (
     <Router>
       <Routes>
-        <Route exact path="/" element={<Home />} />
+        <Route
+          exact
+          path="/"
+          element={<Home username={username} logoutUser={logoutUser} />}
+        />
         <Route exact path="/signup" element={<Signup />} />
-        <Route exact path="/signin" element={<Signin />} />
+        <Route exact path="/login" element={<Login loginUser={loginUser} />} />
       </Routes>
     </Router>
   );

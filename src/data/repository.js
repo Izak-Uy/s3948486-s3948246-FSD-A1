@@ -1,12 +1,13 @@
 const LOGINS_KEY = "logins";
+const USER_KEY = "user";
 
 function getLogins() {
   return JSON.parse(localStorage.getItem(LOGINS_KEY));
 }
 
-function addLogin(email, password) {
+function addLogin(email, password, date) {
   const logins = getLogins() || [];
-  logins.push({ email, password });
+  logins.push({ email, password, date });
   localStorage.setItem(LOGINS_KEY, JSON.stringify(logins));
 }
 
@@ -39,4 +40,25 @@ function removeLogin(email) {
   localStorage.setItem(LOGINS_KEY, JSON.stringify(new_logins));
 }
 
-export { getLogins, addLogin, verifyLogin, checkEmailExists, removeLogin };
+function setUser(username) {
+  localStorage.setItem(USER_KEY, username);
+}
+
+function getUser() {
+  return localStorage.getItem(USER_KEY);
+}
+
+function removeUser() {
+  localStorage.removeItem(USER_KEY);
+}
+
+export {
+  getLogins,
+  addLogin,
+  verifyLogin,
+  checkEmailExists,
+  removeLogin,
+  setUser,
+  getUser,
+  removeUser,
+};

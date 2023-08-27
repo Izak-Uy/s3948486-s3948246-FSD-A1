@@ -1,6 +1,6 @@
 import "./navbar.css";
 
-const Navbar = ({ scrollTop }) => {
+const Navbar = ({ scrollTop, username, logoutUser }) => {
   return (
     <div className="navbar-container">
       <div className="navbar-nobootstrap">
@@ -14,12 +14,30 @@ const Navbar = ({ scrollTop }) => {
           <li>
             <a href="/">About Us</a>
           </li>
-          <li className="nav-link-right">
-            <a href="/signup">Sign Up</a>
-          </li>
-          <li className="nav-also-right">
-            <a href="/signin">Sign In</a>
-          </li>
+          {username === null ? (
+            <>
+              <li className="nav-link-right">
+                <a href="/signup">Sign Up</a>
+              </li>
+              <li className="nav-also-right">
+                <a href="/login">Sign In</a>
+              </li>
+            </>
+          ) : (
+            <>
+              <li className="nav-link-right">
+                <a className="nav-username">
+                  <img className="profile-icon" src="profile-user.png" />
+                  {username}
+                </a>
+              </li>
+              <li className="nav-also-right">
+                <a href="/" onClick={logoutUser}>
+                  Sign Out
+                </a>
+              </li>
+            </>
+          )}
         </ul>
       </div>
       {scrollTop ? (

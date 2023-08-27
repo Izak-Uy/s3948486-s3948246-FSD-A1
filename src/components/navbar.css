@@ -23,9 +23,11 @@
   list-style: none;
 }
 
-.navbar-nobootstrap ul li a {
+.navbar-nobootstrap ul li a,
+.nav-username {
   text-decoration: none;
   padding: 45px;
+  color: #42416e;
 }
 
 .navbar-nobootstrap ul li:hover {
@@ -43,4 +45,10 @@
 
 li.nav-link-right {
   margin-left: auto;
+}
+
+.profile-icon {
+  width: 2em;
+  height: 2em;
+  margin-right: 1em;
 }
