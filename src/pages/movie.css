@@ -1,0 +1,77 @@
+.movie-page-wrapper h1 {
+    text-align: center;
+}
+
+.movie-page-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.movie-page-content {
+    text-align: center;
+}
+
+.movie-page-content img {
+    width: 50%;
+}
+
+.movie-page-content-description {
+    padding: 50px;
+}
+
+.movie-page-content-description img {
+    width: 10%;
+}
+
+.mov-sesh-time {
+    background-color: #42416E;
+    font-family: "Outward";
+    font-size: 20px;
+    color: white;
+    border-radius: 20px;
+}
+
+.movie-page-content-dropdown {
+    margin: 50px;
+}
+
+.movie-page-sessions-box {
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 25px;
+}
+
+.movie-page-content-description-text {
+    margin: 10px;
+    text-align: left;
+}
+
+.movie-page-content-description-text ul {
+    list-style: none;
+    
+}
+
+.mov-page-header {
+    /* background: #42416E; */
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 10%, rgba(66,65,110,1) 50%, rgb(2,0,36,1) 90%);
+}
+
+.mov-page-header h1 {
+    margin: 0px;
+    font-size: 130px;
+    /* -webkit-text-stroke-width: 1px; */
+    -webkit-text-stroke-color: black;
+    font-family: 'Outward';
+    color: #EAEAEA;
+    text-align: center;
+    letter-spacing: 30px;
+}
+
+@font-face {
+    font-family: 'Outward';
+    src: url(/public/Akira-Expanded-Demo.otf);
+    font-weight: normal;
+    font-style: normal;
+}

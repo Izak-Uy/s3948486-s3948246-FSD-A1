@@ -93,24 +93,26 @@ const Content =({imageArrayProps})=> {
                                                 // innerHeight: "50%"
                                             }}
                                         ></img>
-                                        <Button
-                                            className='mov-button'
-                                            size="sm"
-                                            style={{
-                                                position: "absolute",
-                                                top: "85%",
-                                                left: "0",
-                                                right: "0",
-                                                transform: "translateY(-85%)",
-                                                margin: "auto",
-                                                maxWidth: "7em",
-                                                backgroundColor: "#42416E",
-                                                outline: "none",
-                                            }}
-                                            variant="primary"
-                                        >
-                                            View Movie
-                                        </Button>
+                                        <a href="/movie">
+                                            <Button
+                                                className='mov-button'
+                                                size="sm"
+                                                style={{
+                                                    position: "absolute",
+                                                    top: "85%",
+                                                    left: "0",
+                                                    right: "0",
+                                                    transform: "translateY(-85%)",
+                                                    margin: "auto",
+                                                    maxWidth: "7em",
+                                                    backgroundColor: "#42416E",
+                                                    outline: "none",
+                                                }}
+                                                variant="primary"
+                                            >
+                                                View Movie
+                                            </Button>
+                                        </a>
                                     </>
                                 )}
                         </div>

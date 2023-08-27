@@ -16,6 +16,15 @@
   align-content: space-between;
 }
 
+.navbar-nobootstrap .li-logo a {
+  padding: 0%;
+}
+
+.li-logo img{
+  height: 114px;
+  object-fit: cover;
+}
+
 .navbar-nobootstrap ul li {
   /* padding: 20px; */
   /* line-height: 10em; */
