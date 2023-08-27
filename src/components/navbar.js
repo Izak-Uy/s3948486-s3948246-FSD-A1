@@ -14,7 +14,9 @@ const Navbar = ({ scrollTop, username, logoutUser }) => {
       <div className="navbar-nobootstrap">
         <ul>
           <li className="li-logo">
-            <a href="/"><img src="logo.png"></img></a>
+            <a href="/">
+              <img src="logo2.png"></img>
+            </a>
           </li>
           <li>
             <a href="/">Movies</a>
