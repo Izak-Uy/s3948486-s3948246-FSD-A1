@@ -107,10 +107,25 @@ function nameEditValidate(values) {
   return errors;
 }
 
+function reviewValidate(values) {
+  let errors = {};
+
+  if (!values.rating) {
+    errors.rating = "Rating is required";
+  }
+
+  if (!values.review) {
+    errors.review = "Review is required";
+  }
+
+  return errors;
+}
+
 export {
   signupValidate,
   loginValidate,
   emailEditValidate,
   passwordEditValidate,
   nameEditValidate,
+  reviewValidate,
 };
