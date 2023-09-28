@@ -22,6 +22,11 @@
   margin-bottom: 1rem;
 }
 
+.review-entry-form-rating > label,
+.review-entry-form-rating > input.radio-btn {
+  font-size: 28px;
+}
+
 .review-entry-form-rating > label:hover,
 .review-entry-form-rating > label:hover ~ label,
 .review-entry-form-rating > input.radio-btn:checked ~ label {
