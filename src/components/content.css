@@ -15,39 +15,16 @@
     color: white;
 }
 
-.content-container {
-    
-    display:flex;   
-    flex-wrap: wrap; 
-    margin-right: auto;    
-    margin-left: auto; 
+.gallery-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    background: linear-gradient(90deg, rgba(2,0,36,1) 10%, rgba(66,65,110,1) 50%, rgb(2,0,36,1) 90%);
 }
 
 
 .content-header {
     text-align: center;
-}
-
-.movie-slot-container {
-    display: flex;
-    position: relative;
-    justify-content: center;
-    align-items: center;
-    width: 25%;
-    background: rgb(2,0,36);
-    background: linear-gradient(90deg, rgba(2,0,36,1) 10%, rgba(66,65,110,1) 50%, rgb(2,0,36,1) 90%);
-}
-
-.movie-slot-container:hover {
-    transform: scale(1.1);
-    overflow: hidden;
-    z-index: 5;
-}
-
-.movie-slot-container img {
-    width: 100%;
-    height: auto;
-    
 }
 
 .about-us-text h1 {
@@ -64,7 +41,6 @@
 .p-text {
     padding: 5%;
     font-size: 25px;
-    
     color: white;
     letter-spacing: 2px;
     background: rgb(2,0,36);

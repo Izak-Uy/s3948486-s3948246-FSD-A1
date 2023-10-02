@@ -47,8 +47,8 @@ function App() {
           }
         />
         <Route
-          exact
-          path="/movie"
+          // exact
+          path="/movies/:movieName"
           element={<Movie username={username} logoutUser={logoutUser} />}
         />
       </Routes>

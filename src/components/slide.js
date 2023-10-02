@@ -3,7 +3,6 @@ import './slide.css'
 
 const Slide =({imageArrayProps})=> {
     
-    const imageArray = imageArrayProps;
     const [currIndex, setIndex] = React.useState(0);
     const delay = 6000;
 
@@ -11,7 +10,7 @@ const Slide =({imageArrayProps})=> {
         const interval = setInterval(
             () =>
                 setIndex((prevIndex) =>
-                    prevIndex === imageArray.length - 1 ? 0 : prevIndex + 1
+                    prevIndex === imageArrayProps.length - 1 ? 0 : prevIndex + 1
                 ),
             delay
         );
@@ -19,7 +18,7 @@ const Slide =({imageArrayProps})=> {
         return () => {
             clearInterval(interval);
         };
-    }, [imageArray.length]);
+    }, [imageArrayProps.length]);
 
     return (
         <div 
@@ -28,18 +27,18 @@ const Slide =({imageArrayProps})=> {
                     className='slide-slider'
                     style={{ transform: `translate3d(${-currIndex * 100}%, 0 , 0)` }}
                 >
-                    {imageArray.map((MovImg, index) => (
+                    {imageArrayProps.map((item) => (
                         <>
                             <img 
                                 className='bg-image' 
-                                key={index} 
-                                // src={MovImg}
-                                style={{backgroundImage: `url(${MovImg})`}}
+                                key={item.id} 
+                                // src={item.imageSrc}
+                                style={{backgroundImage: `url(${item.imageSrc})`}}
                             ></img>
                             <img 
                                 className='slide-image' 
-                                key={index} 
-                                src={MovImg}
+                                key={item.id} 
+                                src={item.imageSrc}
                             ></img>
                         </>
                     ))}

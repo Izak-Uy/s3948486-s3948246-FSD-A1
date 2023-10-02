@@ -1,10 +1,20 @@
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import './movie.css'
-
-
+// import { useParams } from "react-router-dom";
+// import { useLocation } from "react-router-dom";
 
 function Movie({ username, logoutUser }) {
+
+    // const { movieName } = useParams();
+
+    // const selectedMovie = 
+
+    // const location = useLocation();
+    // const id = location.state;
+    // const { imageSrc } = location.state;
+    // const { movieName } = location.state;
+
     return (
         <>
             <Navbar username={username} logoutUser={logoutUser} />
@@ -17,7 +27,7 @@ function Movie({ username, logoutUser }) {
                 <div className="movie-page-content">
                     <div className="movie-page-content-image">
                         <img
-                            src="https://www.hollywoodreporter.com/wp-content/uploads/2022/07/Oppenheimer-Movie-Poster-Universal-Publicity-EMBED-2022-.jpg?w=1000"
+                            src={imageSrc}
                         ></img>
                     </div>
                     <div className="movie-page-content-description">

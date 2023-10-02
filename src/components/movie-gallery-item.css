@@ -1,0 +1,48 @@
+.gallery-item {
+    display: flex;
+    position: relative;
+    cursor: pointer;
+    justify-content: center;
+}
+
+.gallery-item:hover {
+    transform: scale(1.1);
+    z-index: 1;
+}
+
+.gallery-item-img {
+    overflow: hidden;
+    object-fit: cover;
+    flex-direction: column;
+    width: 100%;
+}
+
+.gallery-item-content {
+    position: absolute;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    top: 70%;
+}
+
+.session-time-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 7em;
+    height: 3em;
+    margin: 5px;
+    background-color: #42416E;
+    font-family: 'Outward';
+    font-size: 20px;
+    color: white;
+    border-radius: 100px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+;
+}
+
+@font-face {
+    font-family: 'Outward';
+    src: url(/public/Akira-Expanded-Demo.otf);
+    font-weight: normal;
+    font-style: normal;
+}
