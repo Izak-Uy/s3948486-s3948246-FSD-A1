@@ -1,0 +1,62 @@
+.review-entry-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 2rem auto;
+}
+
+.hide {
+  display: none;
+}
+
+.review-entry-form-rating {
+  display: flex;
+  width: 30vh;
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  text-align: center;
+  position: relative;
+  margin: auto;
+  margin-bottom: 1rem;
+}
+
+.review-entry-form-rating > label,
+.review-entry-form-rating > input.radio-btn {
+  font-size: 28px;
+}
+
+.review-entry-form-rating > label:hover,
+.review-entry-form-rating > label:hover ~ label,
+.review-entry-form-rating > input.radio-btn:checked ~ label {
+  color: transparent;
+}
+
+.review-entry-form-rating > label:hover::before,
+.review-entry-form-rating > label:hover ~ label:before,
+.review-entry-form-rating > input.radio-btn:checked ~ label:before {
+  content: "\2605";
+  position: absolute;
+  color: #ffd700;
+}
+
+.review-entry-form {
+  align-items: center;
+}
+
+.review-entry-form > form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.review-entry-form-text {
+  width: 100%;
+}
+
+.review-entry-form-text > textarea {
+  resize: none;
+}
