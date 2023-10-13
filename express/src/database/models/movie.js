@@ -1,5 +1,5 @@
-module.exports = (sequelize, DataTypes) => {
-    const Movie = sequelize.define("movie", {
+module.exports = (sequelize, DataTypes) => 
+    sequelize.define("movie", {
         movieId: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
@@ -18,26 +18,25 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false
         },
         movieActors: {
-            // type might need to be updated
-            type: DataTypes.STRING(32),
+            type: DataTypes.ARRAY(DataTypes.STRING(32)),
             allowNull: false
         },
         movieSessions: {
-            // type might need to be updated
-            type: DataTypes.STRING(32),
+            type: DataTypes.ARRAY(DataTypes.STRING(32)),
             allowNull: false
         }
     }, {
-        timestamps: false
+        timestamps: false,
+        updatedAt: false,
+        createdAt: true
     });
 
-    Movie.associate = (models) => {
-        Movie.hasMany(models.review, {
-            foreignKey: 'movieId',
-            onDelete: 'CASCADE'
-        })
-    }
+    // Movie.associate = (models) => {
+    //     Movie.hasMany(models.review, {
+    //         foreignKey: 'movieId',
+    //         onDelete: 'CASCADE'
+    //     })
+    // }
 
-    return Movie;
+    // return Movie;
 
-};

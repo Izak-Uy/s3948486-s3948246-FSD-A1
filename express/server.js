@@ -15,12 +15,13 @@ app.use(cors());
 
 // Simple Hello World route.
 app.get("/", (req, res) => {
-  res.json({ message: "Hello World!" });
+  res.json({ message: "Loop Cinema Backend Running" });
 });
 
 // Add user routes.
 require("./src/routes/user.routes.js")(express, app);
 require("./src/routes/post.routes.js")(express, app);
+require("./src/routes/movie.routes.js")(express, app);
 
 // Set port, listen for requests.
 const PORT = 4000;
