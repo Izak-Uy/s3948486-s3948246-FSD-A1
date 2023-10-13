@@ -2,10 +2,7 @@ import "./Profile.css";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import {
-  getUserLogin,
-  updateLogin,
-  setUser,
-  removeLogin,
+  updateUsers,
   removeUser,
 } from "../data/repository";
 import { useState } from "react";
@@ -17,10 +14,9 @@ import {
 import { useForm, useFormPassword, useFormName } from "../hooks/useForm";
 import { useNavigate } from "react-router-dom";
 
-function Profile({ username, logoutUser, loginUser }) {
+function Profile({ user, setUser, logoutUser }) {
   const [edit, SetEdit] = useState("none");
   const navigate = useNavigate();
-  const login = getUserLogin(username);
   const { nvalues, nerrors, nhandleChange, nhandleSubmit } = useFormName(
     n_save,
     nameEditValidate
@@ -30,27 +26,23 @@ function Profile({ username, logoutUser, loginUser }) {
     emailEditValidate
   );
   const { pw_values, pw_errors, pw_handleChange, pw_handleSubmit } =
-    useFormPassword(pw_save, passwordEditValidate, login);
+    useFormPassword(pw_save, passwordEditValidate, user);
 
-  function n_save() {
-    updateLogin(login.email, login.email, nvalues.name, login.password);
-    login.name = nvalues.name;
-
+  async function n_save() {
+    const newUser = await updateUsers(user.user_id, user.email, nvalues.name, user.password);
+    setUser(newUser);
     SetEdit(() => "none");
   }
-  function e_save() {
-    updateLogin(login.email, values.email, login.name, login.password);
-    login.email = values.email;
+  async function e_save() {
+    const newUser = await updateUsers(user.user_id, values.email, user.first_name, user.password);
 
-    loginUser(values.email);
-    setUser(values.email);
+    setUser(newUser);
     SetEdit(() => "none");
   }
 
-  function pw_save() {
-    updateLogin(login.email, login.email, login.name, pw_values.password);
-
-    login.password = pw_values.password;
+  async function pw_save() {
+    const newUser = await updateUsers(user.user_id, user.email, user.first_name, pw_values.password);
+    setUser(newUser);
 
     SetEdit(() => "none");
     pw_values.oldpassword = "";
@@ -63,7 +55,7 @@ function Profile({ username, logoutUser, loginUser }) {
       "Are you sure you want to delete your account?"
     );
     if (deleteAcc) {
-      removeLogin(login.email);
+      removeUser(user.user_id);
       removeUser();
       logoutUser();
       navigate("/");
@@ -72,7 +64,7 @@ function Profile({ username, logoutUser, loginUser }) {
 
   return (
     <div>
-      <Navbar username={username} logoutUser={logoutUser} />
+      <Navbar user={user} logoutUser={logoutUser} />
       <div className="profile-wrapper">
         <div className="profile-header">
           <h1>Profile</h1>
@@ -83,7 +75,7 @@ function Profile({ username, logoutUser, loginUser }) {
             <form>
               <div className="form-name">
                 <label className="field-title">Name:</label>
-                <input type="text" name="name" value={login.name} readOnly />
+                <input type="text" name="name" value={user.first_name} readOnly />
                 <img
                   className="edit-icon"
                   src="edit.png"
@@ -93,7 +85,7 @@ function Profile({ username, logoutUser, loginUser }) {
               </div>
               <div className="form-email">
                 <label className="field-title">Email:</label>
-                <input type="email" name="email" value={username} readOnly />
+                <input type="email" name="email" value={user.email} readOnly />
                 <img
                   className="edit-icon"
                   src="edit.png"
@@ -118,7 +110,7 @@ function Profile({ username, logoutUser, loginUser }) {
               </div>
               <span>
                 Joined:{" "}
-                {getUserLogin(username).date || "Could not find join date."}
+                {user.createdAt || "Could not find join date."}
               </span>
             </form>
           </div>

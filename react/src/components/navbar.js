@@ -1,8 +1,8 @@
 import "./navbar.css";
 import { useNavigate } from "react-router-dom";
-import { getUserLogin } from "../data/repository";
+import { getUser } from "../data/repository";
 
-const Navbar = ({ scrollTop, username, logoutUser }) => {
+const Navbar = ({ scrollTop, user, logoutUser }) => {
   const navigate = useNavigate();
 
   function logout() {
@@ -20,10 +20,6 @@ const Navbar = ({ scrollTop, username, logoutUser }) => {
     }, 100);
   }
 
-  function getName(username) {
-    const login = getUserLogin(username);
-    return login.name;
-  }
 
   return (
     <div className="navbar-container">
@@ -37,7 +33,7 @@ const Navbar = ({ scrollTop, username, logoutUser }) => {
           <li>
             <button onClick={link_aboutus}>About Us</button>
           </li>
-          {username === null ? (
+          {user !== null ? (
             <>
               <li className="nav-link-right">
                 <a href="/signup">Sign Up</a>
@@ -55,7 +51,7 @@ const Navbar = ({ scrollTop, username, logoutUser }) => {
                     src="profile-user.png"
                     alt="Profile Icon"
                   />
-                  {getName(username)}
+                  {user.first_name}
                 </a>
               </li>
               <li className="nav-also-right">

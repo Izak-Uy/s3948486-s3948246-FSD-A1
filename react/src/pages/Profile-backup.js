@@ -1,7 +1,7 @@
 import "./Profile.css";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
-import { getUserLogin, updateLogin, setUser } from "../data/repository";
+import { getUser, updateUsers, setUser } from "../data/repository";
 import { useState } from "react";
 import { editValidate } from "../validation/ValidationRules";
 import { useFormProfile } from "../hooks/useForm";
@@ -15,7 +15,7 @@ function Profile({ username, logoutUser, loginUser }) {
     values.password = "";
     values.passwordConfirm = "";
   };
-  const login = getUserLogin(username);
+  const login = getUser(username);
   const { values, errors, handleChange, handleSubmit } = useFormProfile(
     save,
     editValidate,
@@ -23,7 +23,7 @@ function Profile({ username, logoutUser, loginUser }) {
   );
 
   function save() {
-    updateLogin(login.email, values.email, values.password);
+    updateUsers(login.email, values.email, values.password);
 
     login.email = values.email;
     login.password = values.password;
@@ -158,7 +158,7 @@ function Profile({ username, logoutUser, loginUser }) {
           </div>
           <hr />
           <span>
-            Joined: {getUserLogin(username).date || "Could not find join date."}
+            Joined: {getUser(username).date || "Could not find join date."}
           </span>
         </div>
       </div>

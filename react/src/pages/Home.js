@@ -4,7 +4,7 @@ import Content from "../components/content";
 import Footer from "../components/footer";
 import Navbar from "../components/navbar";
 
-function Home({ username, logoutUser }) {
+function Home({ user, logoutUser }) {
   const moviesItems = [
     {
       id: 1,
@@ -34,7 +34,7 @@ function Home({ username, logoutUser }) {
 
   return (
     <div className="home-wrapper">
-      <Navbar username={username} logoutUser={logoutUser} />
+      <Navbar user={user} logoutUser={logoutUser} />
       <Header />
       <Slide imageArrayProps={moviesItems} />
       <Content imageArrayProps={moviesItems} />

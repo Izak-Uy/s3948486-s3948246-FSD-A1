@@ -2,27 +2,27 @@ import "./Signup.css";
 import Navbar from "../components/navbar";
 import { useForm } from "../hooks/useForm";
 import { signupValidate } from "../validation/ValidationRules";
-import { addLogin, setUser } from "../data/repository";
+import { addUser, setLoggedIn } from "../data/repository";
 import { useNavigate } from "react-router-dom";
 
-function Signup({ loginUser }) {
+function Signup({ loginUser, user }) {
   const { values, errors, handleChange, handleSubmit } = useForm(
     signup,
     signupValidate
   );
   const navigate = useNavigate();
 
-  function signup() {
-    const date = new Date();
-    addLogin(values.email, values.password, values.name, date.toDateString());
-    setUser(values.email);
-    loginUser(values.email);
+  async function signup() {
+    loginUser(user.user_id);
+    const user = await addUser(values.email, values.password, values.name);
+    setLoggedIn(user.user_id);
+
     navigate("/profile");
   }
 
   return (
     <div>
-      <Navbar scrollTop={false} username={null} />
+      <Navbar scrollTop={false} user={user} />
       <div className="signup-wrapper">
         <div className="signup-header">
           <h1>Sign Up</h1>

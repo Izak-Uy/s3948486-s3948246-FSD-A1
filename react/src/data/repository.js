@@ -1,89 +1,106 @@
+import axios from "axios";
 const LOGINS_KEY = "logins";
 const USER_KEY = "user";
+const API_HOST = "http://localhost:4000/api";
 
-function getLogins() {
-  return JSON.parse(localStorage.getItem(LOGINS_KEY));
+async function getUsers() {
+  return await axios.get(API_HOST + "/users");
 }
 
-function addLogin(email, password, name, date) {
-  const logins = getLogins() || [];
-  logins.push({ email, password, name, date });
-  localStorage.setItem(LOGINS_KEY, JSON.stringify(logins));
+async function getUser(user_id) {
+  return await axios.get(API_HOST + "/users/user/" + user_id);
 }
 
-function updateLogin(email, new_email, name, new_password) {
-  const logins = getLogins();
-  if (!logins) {
-    return;
-  }
-  const check_email = (login) => login.email === email;
-  const i = logins.findIndex(check_email);
-  logins[i].email = new_email;
-  logins[i].name = name;
-  logins[i].password = new_password;
-  localStorage.setItem(LOGINS_KEY, JSON.stringify(logins));
+async function addUser(email, password, name, date) {
+
+  const user = await axios.post(API_HOST + "/users", 
+  {
+    email: email,
+    password_hash: password,
+    first_name: name,
+    join_date: date
+  });
+  return user;
+
 }
 
-function verifyLogin(email, password) {
-  const logins = getLogins();
-  if (!logins) {
-    return false;
-  }
-  const check_login = (login) =>
-    login.email === email && login.password === password;
-  return logins.some(check_login);
-}
-
-function checkEmailExists(email) {
-  const logins = getLogins();
-  if (!logins) {
-    return false;
-  }
-  const check_email = (login) => login.email === email;
-  return logins.some(check_email);
-}
-
-function removeLogin(email) {
-  const logins = getLogins();
-  if (!logins) {
-    return;
-  }
-  const check_email = (login) => login.email !== email;
-  const new_logins = logins.filter(check_email);
-  localStorage.setItem(LOGINS_KEY, JSON.stringify(new_logins));
-}
-
-function setUser(email) {
-  localStorage.setItem(USER_KEY, email);
-}
-
-function getUser() {
-  return localStorage.getItem(USER_KEY);
-}
-
-function removeUser() {
-  localStorage.removeItem(USER_KEY);
-}
-
-function getUserLogin(email) {
-  const logins = getLogins();
-  if (!logins) {
-    return;
-  }
-  const check_email = (login) => login.email === email;
-  const user = logins.find(check_email);
+async function updateUsers(user_id, new_email, new_name, new_password) {
+  const user = await axios.put(API_HOST + "/users/user/" + user_id, 
+  {
+    email: new_email,
+    password_hash: new_password,
+    first_name: new_name
+  });
   return user;
 }
 
+async function verifyLogin(email, password) {
+  if (await checkEmailExists(email) === false) {
+    return false;
+  }
+
+  const valid = await axios.post(API_HOST + "/users/validate", {
+    email: email,
+    password: password
+  });
+
+  return valid.valid;
+}
+
+async function loginUserDB(email, password) {
+  const response = await axios.post(API_HOST + "/users/login", {
+    email: email,
+    password: password
+  });
+
+  if (response === null || response.valid === false) {
+    return null;
+  } else {
+    console.log(response);
+    return response.user;
+  }
+}
+
+async function checkEmailExists(email) {
+  const response = await axios.get(API_HOST + "/users/emails");
+  const users = response.data;
+  if (!users || users.length === 0) {
+    return false;
+  }
+
+  const exists = users.some(user => user.email === email);
+  return exists;
+}
+
+async function removeUser(user_id) {
+  const user = await axios.delete(API_HOST + "/users/user/" + user_id);
+
+  return user;
+}
+
+function setLoggedIn(user_id) {
+  localStorage.setItem(USER_KEY, user_id);
+}
+
+function getLoggedIn() {
+  return localStorage.getItem(USER_KEY);
+}
+
+function removeLoggedIn() {
+  localStorage.removeItem(USER_KEY);
+}
+
+
 export {
-  getLogins,
-  addLogin,
-  verifyLogin,
-  checkEmailExists,
-  removeLogin,
-  setUser,
+  getUsers,
   getUser,
+  addUser,
+  verifyLogin,
+  loginUserDB,
+  checkEmailExists,
   removeUser,
-  getUserLogin,
-  updateLogin,
+  setLoggedIn,
+  getLoggedIn,
+  removeLoggedIn,
+  updateUsers,
 };

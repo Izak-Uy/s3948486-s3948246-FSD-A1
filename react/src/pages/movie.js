@@ -3,10 +3,10 @@ import Footer from "../components/footer";
 import "./movie.css";
 import ReviewEntry from "../components/review-entry";
 
-function Movie({ username, logoutUser }) {
+function Movie({ user_id, logoutUser }) {
   return (
     <>
-      <Navbar username={username} logoutUser={logoutUser} />
+      <Navbar user_id={user_id} logoutUser={logoutUser} />
 
       <div className="movie-page-wrapper">
         <div className="mov-page-header">

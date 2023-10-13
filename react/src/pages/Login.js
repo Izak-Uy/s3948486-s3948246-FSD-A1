@@ -2,10 +2,10 @@ import "./Login.css";
 import Navbar from "../components/navbar";
 import { useForm } from "../hooks/useForm";
 import { loginValidate } from "../validation/ValidationRules";
-import { setUser } from "../data/repository";
+import { setLoggedIn, loginUserDB } from "../data/repository";
 import { useNavigate } from "react-router-dom";
 
-function Login({ loginUser }) {
+function Login({ loginUser, user }) {
   const { values, errors, handleChange, handleSubmit } = useForm(
     login,
     loginValidate
@@ -13,15 +13,21 @@ function Login({ loginUser }) {
 
   const navigate = useNavigate();
 
-  function login() {
-    setUser(values.email);
-    loginUser(values.email);
+  async function login() {
+    const user = await loginUserDB(values.email, values.password);
+    console.log(user);
+    if (user === null) {
+      console.log("Failed to log in.");
+      return;
+    }
+    loginUser(user.user_id);
+    setLoggedIn(user.user_id);
     navigate("/profile");
   }
 
   return (
     <div>
-      <Navbar scrollTop={false} username={null} />
+      <Navbar scrollTop={false} user={user} />
       <div className="login-wrapper">
         <div className="login-header">
           <h1>Sign In</h1>

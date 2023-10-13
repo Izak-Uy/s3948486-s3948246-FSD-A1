@@ -5,20 +5,30 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { getUser, removeUser } from "./data/repository";
-import { useState } from "react";
+import { getUser, removeLoggedIn, setLoggedIn } from "./data/repository";
+import { useEffect, useState } from "react";
 import Movie from "./pages/movie";
 
 function App() {
-  const [username, setUsername] = useState(getUser());
+  const [user_id, setUserId] = useState(getUser());
+  const [user, setUser] = useState();
+  
+  useEffect(() => {
+    async function fetchUser() {
+      const user = await getUser(user_id);
+      setUser(user);
+    }
+    fetchUser();
+  }, [user_id]);
 
-  const loginUser = (username) => {
-    setUsername(username);
+  const loginUser = (user_id) => {
+    setUserId(user_id);
+    setLoggedIn(user_id);
   };
 
   const logoutUser = () => {
-    removeUser();
-    setUsername(null);
+    setUserId(null);
+    removeLoggedIn();
   };
 
   return (
@@ -27,29 +37,33 @@ function App() {
         <Route
           exact
           path="/"
-          element={<Home username={username} logoutUser={logoutUser} />}
+          element={<Home user={user} logoutUser={logoutUser} />}
         />
         <Route
           exact
           path="/signup"
-          element={<Signup loginUser={loginUser} />}
+          element={<Signup loginUser={loginUser} user={user} />}
         />
-        <Route exact path="/login" element={<Login loginUser={loginUser} />} />
+        <Route exact path="/login" element={<Login 
+          loginUser={loginUser} 
+          user={user} 
+          setUser={setUser}
+          />} />
         <Route
           exact
           path="/profile"
           element={
             <Profile
-              username={username}
+              user={user}
+              setUser={setUser}
               logoutUser={logoutUser}
-              loginUser={loginUser}
             />
           }
         />
         <Route
           // exact
           path="/movies/:movieName"
-          element={<Movie username={username} logoutUser={logoutUser} />}
+          element={<Movie user={user} setUser={setUser} logoutUser={logoutUser} />}
         />
       </Routes>
     </Router>

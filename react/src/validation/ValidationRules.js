@@ -1,6 +1,6 @@
 import { checkEmailExists, verifyLogin } from "../data/repository";
 
-function signupValidate(values) {
+async function signupValidate(values) {
   let errors = {};
 
   if (!values.name) {
@@ -11,7 +11,7 @@ function signupValidate(values) {
     errors.email = "Email address is required";
   } else if (!/\S+@\S+\.\S+/.test(values.email)) {
     errors.email = "Email address is invalid";
-  } else if (checkEmailExists(values.email)) {
+  } else if (await checkEmailExists(values.email)) {
     errors.email = "Email address already exists";
   }
   if (!values.password) {
@@ -38,24 +38,32 @@ function signupValidate(values) {
   return errors;
 }
 
-function loginValidate(values) {
+async function loginValidate(values) {
   let errors = {};
+  let valid = null;
 
   if (!values.email) {
     errors.email = "Email address is required";
   } else if (!/\S+@\S+\.\S+/.test(values.email)) {
     errors.email = "Email address is invalid";
-  } else if (!checkEmailExists(values.email)) {
+  } else if (!(await checkEmailExists(values.email))) {
     errors.email = "Email address does not exist in our records";
+  } else {
+    valid = await verifyLogin(values.email, values.password);
+    if (valid === false) {
+      errors.password = "Email or Password is incorrect";
+    }
   }
 
   if (!values.password) {
     errors.password = "Password is required";
-  } else if (
-    checkEmailExists(values.email) &&
-    !verifyLogin(values.email, values.password)
-  ) {
-    errors.password = "Password is incorrect";
+  } else if (valid === false) {
+    errors.password = "Email or Password is incorrect";
+  } else if (valid === null) {
+    valid = await verifyLogin(values.email, values.password);
+    if (valid === false) {
+      errors.password = "Email or Password is incorrect";
+    }
   }
 
   return errors;
