@@ -5,67 +5,63 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { getUser, removeLoggedIn, setLoggedIn } from "./data/repository";
-import { useEffect, useState } from "react";
+import { getLoggedIn, getUser, removeLoggedIn, setLoggedIn } from "./data/repository";
+import { useMemo } from "react";
 import Movie from "./pages/movie";
+import { UserContext } from "./contexts/userContext";
+import { useUser } from "./hooks/useUser";
 
 function App() {
-  const [user_id, setUserId] = useState(getUser());
-  const [user, setUser] = useState();
+  // const [user_id, setUserId] = useState(getLoggedIn());
+  // const [user, setUser] = useState();
   
-  useEffect(() => {
-    async function fetchUser() {
-      const user = await getUser(user_id);
-      setUser(user);
-    }
-    fetchUser();
-  }, [user_id]);
-
-  const loginUser = (user_id) => {
-    setUserId(user_id);
-    setLoggedIn(user_id);
-  };
-
-  const logoutUser = () => {
-    setUserId(null);
-    removeLoggedIn();
-  };
+  // useEffect(() => {
+  //   async function fetchUser() {
+  //     const user = await getUser(user_id);
+  //     setUser(user);
+  //   }
+  //   fetchUser();
+  // }, []);
+  
+  // const loginUser = (user_id) => {
+  //   setUserId(user_id);
+  //   setLoggedIn(user_id);
+  // };
+  
+  // const logoutUser = () => {
+  //   setUserId(null);
+  //   removeLoggedIn();
+  // };
+  const [user, setUser, loginUser, logoutUser] = useUser();
+  const value = useMemo(() => [user, setUser, loginUser, logoutUser], [user, setUser, loginUser, logoutUser]);
 
   return (
     <Router>
-      <Routes>
-        <Route
-          exact
-          path="/"
-          element={<Home user={user} logoutUser={logoutUser} />}
-        />
-        <Route
-          exact
-          path="/signup"
-          element={<Signup loginUser={loginUser} user={user} />}
-        />
-        <Route exact path="/login" element={<Login 
-          loginUser={loginUser} 
-          user={user} 
-          setUser={setUser}
-          />} />
-        <Route
-          exact
-          path="/profile"
-          element={
-            <Profile
-              user={user}
-              setUser={setUser}
-              logoutUser={logoutUser}
-            />
-          }
-        />
-        <Route
-          // exact
-          path="/movies/:movieName"
-          element={<Movie user={user} setUser={setUser} logoutUser={logoutUser} />}
-        />
-      </Routes>
+      <UserContext.Provider value={value}>
+        <Routes>
+          <Route
+            exact
+            path="/"
+            element={<Home />}
+          />
+          <Route
+            exact
+            path="/signup"
+            element={<Signup />}
+          />
+          <Route exact path="/login" element={<Login />} />
+          <Route
+            exact
+            path="/profile"
+            element={<Profile />}
+          />
+          <Route
+            // exact
+            path="/movies/:movieName"
+            element={<Movie />}
+          />
+        </Routes>
+      </UserContext.Provider>
     </Router>
   );
 }

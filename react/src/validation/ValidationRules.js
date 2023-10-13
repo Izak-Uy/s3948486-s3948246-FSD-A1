@@ -48,7 +48,7 @@ async function loginValidate(values) {
     errors.email = "Email address is invalid";
   } else if (!(await checkEmailExists(values.email))) {
     errors.email = "Email address does not exist in our records";
-  } else {
+  } else if (values.password !== "") {
     valid = await verifyLogin(values.email, values.password);
     if (valid === false) {
       errors.password = "Email or Password is incorrect";
@@ -69,13 +69,17 @@ async function loginValidate(values) {
   return errors;
 }
 
-function passwordEditValidate(values, login) {
+async function passwordEditValidate(values, login) {
   let errors = {};
+  
 
   if (!values.oldpassword) {
     errors.oldpassword = "Old password is required";
-  } else if (values.oldpassword !== login.password) {
-    errors.oldpassword = "Old password is incorrect";
+  } else {
+    const valid = await verifyLogin(login.email, values.oldpassword);
+    if (valid === false) {
+      errors.oldpassword = "Old password is incorrect";
+    }
   }
 
   if (!values.password) {
@@ -84,7 +88,18 @@ function passwordEditValidate(values, login) {
     errors.password = "New password must be 8 or more characters";
   } else if (values.password === values.oldpassword) {
     errors.password = "New password must be different from old password";
+  } else if (/ /.test(values.password)) {
+    errors.password = "Password cannot contain spaces";
+  } else if (!/\d/.test(values.password)) {
+    errors.password = "Password must contain at least one number";
+  } else if (!/[a-z]/.test(values.password)) {
+    errors.password = "Password must contain at least one lowercase letter";
+  } else if (!/[A-Z]/.test(values.password)) {
+    errors.password = "Password must contain at least one uppercase letter";
+  } else if (!/\W/.test(values.password)) {
+    errors.password = "Password must contain at least one special character";
   }
+  
   if (!values.passwordConfirm) {
     errors.passwordConfirm = "Password confirmation is required";
   } else if (values.passwordConfirm !== values.password) {

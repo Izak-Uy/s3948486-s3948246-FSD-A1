@@ -4,34 +4,46 @@ const USER_KEY = "user";
 const API_HOST = "http://localhost:4000/api";
 
 async function getUsers() {
-  return await axios.get(API_HOST + "/users");
+  const response = await axios.get(API_HOST + "/users");
+  return response.data;
 }
 
 async function getUser(user_id) {
-  return await axios.get(API_HOST + "/users/user/" + user_id);
+  const response = await axios.get(API_HOST + "/users/user/" + user_id);
+  return response.data;
 }
 
 async function addUser(email, password, name, date) {
 
-  const user = await axios.post(API_HOST + "/users", 
+  const response = await axios.post(API_HOST + "/users", 
   {
     email: email,
     password_hash: password,
     first_name: name,
     join_date: date
   });
-  return user;
+  return response.data;
 
 }
 
-async function updateUsers(user_id, new_email, new_name, new_password) {
-  const user = await axios.put(API_HOST + "/users/user/" + user_id, 
-  {
-    email: new_email,
-    password_hash: new_password,
-    first_name: new_name
-  });
-  return user;
+async function updateUser(user_id, new_email, new_name, old_password, new_password) {
+  if (old_password !== new_password) {
+    const response = await axios.put(API_HOST + "/users/user/" + user_id, 
+    {
+      email: new_email,
+      new_password: new_password,
+      first_name: new_name
+    });
+    return response.data;
+  } else {
+    const response = await axios.put(API_HOST + "/users/user/" + user_id, 
+    {
+      email: new_email,
+      first_name: new_name,
+      password_hash: old_password
+    });
+    return response.data;
+  }
 }
 
 async function verifyLogin(email, password) {
@@ -44,7 +56,7 @@ async function verifyLogin(email, password) {
     password: password
   });
 
-  return valid.valid;
+  return valid.data.valid;
 }
 
 async function loginUserDB(email, password) {
@@ -53,11 +65,10 @@ async function loginUserDB(email, password) {
     password: password
   });
 
-  if (response === null || response.valid === false) {
+  if (response.data.user === null || response.data.valid === false) {
     return null;
   } else {
-    console.log(response);
-    return response.user;
+    return response.data.user;
   }
 }
 
@@ -73,9 +84,9 @@ async function checkEmailExists(email) {
 }
 
 async function removeUser(user_id) {
-  const user = await axios.delete(API_HOST + "/users/user/" + user_id);
+  const response = await axios.delete(API_HOST + "/users/user/" + user_id);
 
-  return user;
+  return response.data;
 }
 
 function setLoggedIn(user_id) {
@@ -102,5 +113,5 @@ export {
   setLoggedIn,
   getLoggedIn,
   removeLoggedIn,
-  updateUsers,
+  updateUser,
 };

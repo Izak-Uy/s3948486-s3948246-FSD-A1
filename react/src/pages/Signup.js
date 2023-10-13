@@ -4,8 +4,11 @@ import { useForm } from "../hooks/useForm";
 import { signupValidate } from "../validation/ValidationRules";
 import { addUser, setLoggedIn } from "../data/repository";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../contexts/userContext";
 
-function Signup({ loginUser, user }) {
+function Signup() {
+  const [user, setUser, loginUser, logoutUser] = useContext(UserContext);
   const { values, errors, handleChange, handleSubmit } = useForm(
     signup,
     signupValidate
@@ -15,14 +18,13 @@ function Signup({ loginUser, user }) {
   async function signup() {
     loginUser(user.user_id);
     const user = await addUser(values.email, values.password, values.name);
-    setLoggedIn(user.user_id);
 
     navigate("/profile");
   }
 
   return (
     <div>
-      <Navbar scrollTop={false} user={user} />
+      <Navbar scrollTop={false} />
       <div className="signup-wrapper">
         <div className="signup-header">
           <h1>Sign Up</h1>

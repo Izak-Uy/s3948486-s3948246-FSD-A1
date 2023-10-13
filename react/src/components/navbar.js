@@ -1,8 +1,10 @@
 import "./navbar.css";
 import { useNavigate } from "react-router-dom";
-import { getUser } from "../data/repository";
+import { useContext } from "react";
+import { UserContext } from "../contexts/userContext";
 
-const Navbar = ({ scrollTop, user, logoutUser }) => {
+const Navbar = ({ scrollTop }) => {
+  const [user, setUser, loginUser, logoutUser] = useContext(UserContext);
   const navigate = useNavigate();
 
   function logout() {
@@ -20,7 +22,6 @@ const Navbar = ({ scrollTop, user, logoutUser }) => {
     }, 100);
   }
 
-
   return (
     <div className="navbar-container">
       <div className="navbar-nobootstrap">
@@ -33,7 +34,7 @@ const Navbar = ({ scrollTop, user, logoutUser }) => {
           <li>
             <button onClick={link_aboutus}>About Us</button>
           </li>
-          {user !== null ? (
+          {!user ? (
             <>
               <li className="nav-link-right">
                 <a href="/signup">Sign Up</a>

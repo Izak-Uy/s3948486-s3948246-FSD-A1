@@ -68,10 +68,14 @@ exports.login = async (req, res) => {
 exports.update = async (req, res) => {
   const user = await db.user.findByPk(req.params.user_id);
 
-  const hash = await argon2.hash(req.body.password, { type: argon2.argon2id });
+  if (req.body.new_password) {
+    const hash = await argon2.hash(req.body.new_password, { type: argon2.argon2id });
 
+    user.password_hash = hash;
+  } else {
+    user.password_hash = req.body.password_hash;
+  }
   user.email = req.body.email;
-  user.password_hash = hash;
   user.first_name = req.body.first_name;
 
   await user.save();

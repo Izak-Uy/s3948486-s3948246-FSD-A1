@@ -2,8 +2,9 @@ import "./Profile.css";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import {
-  updateUsers,
+  updateUser,
   removeUser,
+  removeLoggedIn,
 } from "../data/repository";
 import { useState } from "react";
 import {
@@ -13,8 +14,11 @@ import {
 } from "../validation/ValidationRules";
 import { useForm, useFormPassword, useFormName } from "../hooks/useForm";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../contexts/userContext";
 
-function Profile({ user, setUser, logoutUser }) {
+function Profile() {
+  const [user, setUser, loginUser, logoutUser] = useContext(UserContext);
   const [edit, SetEdit] = useState("none");
   const navigate = useNavigate();
   const { nvalues, nerrors, nhandleChange, nhandleSubmit } = useFormName(
@@ -29,19 +33,19 @@ function Profile({ user, setUser, logoutUser }) {
     useFormPassword(pw_save, passwordEditValidate, user);
 
   async function n_save() {
-    const newUser = await updateUsers(user.user_id, user.email, nvalues.name, user.password);
+    const newUser = await updateUser(user.user_id, user.email, nvalues.name, user.password_hash, user.password_hash);
     setUser(newUser);
     SetEdit(() => "none");
   }
   async function e_save() {
-    const newUser = await updateUsers(user.user_id, values.email, user.first_name, user.password);
+    const newUser = await updateUser(user.user_id, values.email, user.first_name, user.password_hash, user.password_hash);
 
     setUser(newUser);
     SetEdit(() => "none");
   }
 
   async function pw_save() {
-    const newUser = await updateUsers(user.user_id, user.email, user.first_name, pw_values.password);
+    const newUser = await updateUser(user.user_id, user.email, user.first_name, user.password_hash, pw_values.password);
     setUser(newUser);
 
     SetEdit(() => "none");
@@ -56,7 +60,6 @@ function Profile({ user, setUser, logoutUser }) {
     );
     if (deleteAcc) {
       removeUser(user.user_id);
-      removeUser();
       logoutUser();
       navigate("/");
     }
@@ -64,7 +67,7 @@ function Profile({ user, setUser, logoutUser }) {
 
   return (
     <div>
-      <Navbar user={user} logoutUser={logoutUser} />
+      <Navbar />
       <div className="profile-wrapper">
         <div className="profile-header">
           <h1>Profile</h1>
@@ -75,7 +78,7 @@ function Profile({ user, setUser, logoutUser }) {
             <form>
               <div className="form-name">
                 <label className="field-title">Name:</label>
-                <input type="text" name="name" value={user.first_name} readOnly />
+                <input type="text" name="name" value={user ? user.first_name : "Loading..."} readOnly />
                 <img
                   className="edit-icon"
                   src="edit.png"
@@ -85,7 +88,7 @@ function Profile({ user, setUser, logoutUser }) {
               </div>
               <div className="form-email">
                 <label className="field-title">Email:</label>
-                <input type="email" name="email" value={user.email} readOnly />
+                <input type="email" name="email" value={user ?user.email : "Loading..."} readOnly />
                 <img
                   className="edit-icon"
                   src="edit.png"
@@ -110,7 +113,7 @@ function Profile({ user, setUser, logoutUser }) {
               </div>
               <span>
                 Joined:{" "}
-                {user.createdAt || "Could not find join date."}
+                {user ? user.createdAt : "Loading..."}
               </span>
             </form>
           </div>
@@ -147,7 +150,6 @@ function Profile({ user, setUser, logoutUser }) {
                       type="submit"
                       value="Save"
                       className="email-submit"
-                      onSubmit={n_save}
                     />
                   </div>
                 </div>
@@ -178,7 +180,6 @@ function Profile({ user, setUser, logoutUser }) {
                       type="submit"
                       value="Save"
                       className="email-submit"
-                      onSubmit={e_save}
                     />
                   </div>
                 </div>
@@ -265,7 +266,6 @@ function Profile({ user, setUser, logoutUser }) {
                     type="submit"
                     value="Save"
                     className="form-submit"
-                    onSubmit={pw_save}
                   />
                 </div>
               </form>

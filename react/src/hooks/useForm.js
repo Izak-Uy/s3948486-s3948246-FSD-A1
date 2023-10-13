@@ -77,9 +77,9 @@ const useFormPassword = (callback, validate, login) => {
     }
   }, [pw_errors]);
 
-  const pw_handleSubmit = (event) => {
+  const pw_handleSubmit = async (event) => {
     if (event) event.preventDefault();
-    setErrors(validate(pw_values, login));
+    setErrors(await validate(pw_values, login));
     setIsSubmitting(true);
   };
 

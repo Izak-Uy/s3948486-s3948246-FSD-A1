@@ -3,8 +3,11 @@ import Slide from "../components/slide";
 import Content from "../components/content";
 import Footer from "../components/footer";
 import Navbar from "../components/navbar";
+import { useContext } from "react";
+import { UserContext } from "../contexts/userContext";
 
-function Home({ user, logoutUser }) {
+function Home() {
+  const [user, setUser, loginUser, logoutUser] = useContext(UserContext);
   const moviesItems = [
     {
       id: 1,
@@ -34,7 +37,7 @@ function Home({ user, logoutUser }) {
 
   return (
     <div className="home-wrapper">
-      <Navbar user={user} logoutUser={logoutUser} />
+      <Navbar />
       <Header />
       <Slide imageArrayProps={moviesItems} />
       <Content imageArrayProps={moviesItems} />

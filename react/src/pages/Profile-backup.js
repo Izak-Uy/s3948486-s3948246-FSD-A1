@@ -1,7 +1,7 @@
 import "./Profile.css";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
-import { getUser, updateUsers, setUser } from "../data/repository";
+import { getUser, updateUser, setUser } from "../data/repository";
 import { useState } from "react";
 import { editValidate } from "../validation/ValidationRules";
 import { useFormProfile } from "../hooks/useForm";
@@ -23,7 +23,7 @@ function Profile({ username, logoutUser, loginUser }) {
   );
 
   function save() {
-    updateUsers(login.email, values.email, values.password);
+    updateUser(login.email, values.email, values.password);
 
     login.email = values.email;
     login.password = values.password;
@@ -38,7 +38,7 @@ function Profile({ username, logoutUser, loginUser }) {
 
   return (
     <div>
-      <Navbar scrollTop={false} username={username} logoutUser={logoutUser} />
+      <Navbar scrollTop={false} />
       <div className="profile-wrapper">
         <div className="profile-header">
           <h1>Profile</h1>

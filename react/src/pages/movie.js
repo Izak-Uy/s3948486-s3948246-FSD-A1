@@ -2,11 +2,15 @@ import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import "./movie.css";
 import ReviewEntry from "../components/review-entry";
+import { useContext } from "react";
+import { UserContext } from "../contexts/userContext";
 
-function Movie({ user_id, logoutUser }) {
+function Movie() {
+  const [user_id, setUser, loginUser, logoutUser] = useContext(UserContext);
+
   return (
     <>
-      <Navbar user_id={user_id} logoutUser={logoutUser} />
+      <Navbar />
 
       <div className="movie-page-wrapper">
         <div className="mov-page-header">

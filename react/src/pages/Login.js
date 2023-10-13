@@ -4,8 +4,11 @@ import { useForm } from "../hooks/useForm";
 import { loginValidate } from "../validation/ValidationRules";
 import { setLoggedIn, loginUserDB } from "../data/repository";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../contexts/userContext";
 
-function Login({ loginUser, user }) {
+function Login() {
+  const [user, setUser, loginUser, logoutUser] = useContext(UserContext);
   const { values, errors, handleChange, handleSubmit } = useForm(
     login,
     loginValidate
@@ -15,19 +18,18 @@ function Login({ loginUser, user }) {
 
   async function login() {
     const user = await loginUserDB(values.email, values.password);
-    console.log(user);
     if (user === null) {
       console.log("Failed to log in.");
       return;
     }
     loginUser(user.user_id);
-    setLoggedIn(user.user_id);
+    setUser(user);
     navigate("/profile");
   }
 
   return (
     <div>
-      <Navbar scrollTop={false} user={user} />
+      <Navbar scrollTop={false} />
       <div className="login-wrapper">
         <div className="login-header">
           <h1>Sign In</h1>
