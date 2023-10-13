@@ -2,13 +2,13 @@ import "./Login.css";
 import Navbar from "../components/navbar";
 import { useForm } from "../hooks/useForm";
 import { loginValidate } from "../validation/ValidationRules";
-import { setLoggedIn, loginUserDB } from "../data/repository";
+import { loginUserDB } from "../data/repository";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../contexts/userContext";
 
 function Login() {
-  const [user, setUser, loginUser, logoutUser] = useContext(UserContext);
+  const [, setUser, loginUser, ] = useContext(UserContext);
   const { values, errors, handleChange, handleSubmit } = useForm(
     login,
     loginValidate

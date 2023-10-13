@@ -11,9 +11,11 @@ exports.all = async (req, res) => {
 
 // Create a user in the database.
 exports.create = async (req, res) => {
+  console.log(req.body.password);
+  const hash = await argon2.hash(req.body.password, { type: argon2.argon2id });
   const user = await db.user.create({
     email: req.body.email,
-    password_hash: req.body.password_hash,
+    password_hash: hash,
     first_name: req.body.first_name,
   });
 

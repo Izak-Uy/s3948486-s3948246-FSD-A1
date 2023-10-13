@@ -2,11 +2,8 @@ import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import "./movie.css";
 import ReviewEntry from "../components/review-entry";
-import { useContext } from "react";
-import { UserContext } from "../contexts/userContext";
 
 function Movie() {
-  const [user_id, setUser, loginUser, logoutUser] = useContext(UserContext);
 
   return (
     <>

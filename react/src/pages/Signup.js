@@ -2,13 +2,13 @@ import "./Signup.css";
 import Navbar from "../components/navbar";
 import { useForm } from "../hooks/useForm";
 import { signupValidate } from "../validation/ValidationRules";
-import { addUser, setLoggedIn } from "../data/repository";
+import { addUser } from "../data/repository";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../contexts/userContext";
 
 function Signup() {
-  const [user, setUser, loginUser, logoutUser] = useContext(UserContext);
+  const [,, loginUser,] = useContext(UserContext);
   const { values, errors, handleChange, handleSubmit } = useForm(
     signup,
     signupValidate
@@ -16,8 +16,8 @@ function Signup() {
   const navigate = useNavigate();
 
   async function signup() {
-    loginUser(user.user_id);
-    const user = await addUser(values.email, values.password, values.name);
+    const newUser = await addUser(values.email, values.password, values.name);
+    loginUser(newUser.user_id);
 
     navigate("/profile");
   }
