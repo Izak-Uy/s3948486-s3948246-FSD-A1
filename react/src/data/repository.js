@@ -18,7 +18,7 @@ async function addUser(email, password, name, date) {
   const response = await axios.post(API_HOST + "/users", 
   {
     email: email,
-    password_hash: password,
+    password: password,
     first_name: name,
     join_date: date
   });

@@ -3,11 +3,8 @@ import Slide from "../components/slide";
 import Content from "../components/content";
 import Footer from "../components/footer";
 import Navbar from "../components/navbar";
-import { useContext } from "react";
-import { UserContext } from "../contexts/userContext";
 
 function Home() {
-  const [user, setUser, loginUser, logoutUser] = useContext(UserContext);
   const moviesItems = [
     {
       id: 1,

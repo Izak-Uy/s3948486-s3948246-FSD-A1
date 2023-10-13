@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { UserContext } from "../contexts/userContext";
 
 const Navbar = ({ scrollTop }) => {
-  const [user, setUser, loginUser, logoutUser] = useContext(UserContext);
+  const [user ,, logoutUser] = useContext(UserContext);
   const navigate = useNavigate();
 
   function logout() {
