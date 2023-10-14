@@ -1,5 +1,5 @@
-module.exports = (sequelize, DataTypes) => 
-    sequelize.define("movie", {
+module.exports = (sequelize, DataTypes) => {
+    const Movie = sequelize.define("movie", {
         movieId: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
@@ -16,19 +16,9 @@ module.exports = (sequelize, DataTypes) =>
         movieDescription: {
             type: DataTypes.TEXT,
             allowNull: false
-        },
-        movieActors: {
-            type: DataTypes.ARRAY(DataTypes.STRING(32)),
-            allowNull: false
-        },
-        movieSessions: {
-            type: DataTypes.ARRAY(DataTypes.STRING(32)),
-            allowNull: false
         }
     }, {
         timestamps: false,
-        updatedAt: false,
-        createdAt: true
     });
 
     // Movie.associate = (models) => {
@@ -38,5 +28,5 @@ module.exports = (sequelize, DataTypes) =>
     //     })
     // }
 
-    // return Movie;
-
+    return Movie;
+}
