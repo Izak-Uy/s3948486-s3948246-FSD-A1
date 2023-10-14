@@ -2,8 +2,18 @@ import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import "./movie.css";
 import ReviewEntry from "../components/review-entry";
+import { useEffect } from "react";
+import { getMovies } from "../data/movieRepository";
 
 function Movie() {
+
+  useEffect(() => {
+    async function fetchMovies() {
+      const res = await getMovies();
+      console.log(res);
+    }
+    fetchMovies();
+  }, []);
 
   return (
     <>
