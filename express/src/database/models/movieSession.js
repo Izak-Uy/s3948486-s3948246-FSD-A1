@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const movieSession = sequelize.define('MovieSession', {
+  const movieSession = sequelize.define('movieSession', {
     movieId: {
       type: DataTypes.INTEGER,
       allowNull: false,
