@@ -46,6 +46,7 @@ jest.mock('../data/repository', () => {
 const mockLoginUser = jest.fn();
 useContext.mockReturnValue([null, null, mockLoginUser, null]);
 
+// Note: tests will fail if form components don't render since they are searched for in the beforeEach.
 beforeEach(() => {
   act(() => {
     const utils = render(<Signup />);
@@ -96,5 +97,29 @@ test('valid inputs submits form', async () => {
     );
     expect(mockLoginUser).toHaveBeenCalledTimes(1);
     expect(useNavigate).toHaveBeenCalledTimes(1);
+  });
+});
+
+// Testing to check client-side validation. With an invalid email format,
+// an invalid password, a password confirmation that does not match the
+// password and a valid name, the form should not submit. Validation from
+// API calls are mocked to be true for this test.
+test('invalid inputs does not submit form', async () => {
+  act(() => {
+    fireEvent.change(nameInput, { target: { value: 'Test User' } });
+    fireEvent.change(emailInput, { target: { value: 'email' } });
+    fireEvent.change(passwordInput, { target: { value: 'password' } });
+    fireEvent.change(confirmPasswordInput, { target: { value: 'password1' } });
+    fireEvent.click(submitButton);
+  });
+
+  waitFor(() => {
+    // functions that run on successful form submission should not run
+    expect(addUser).toHaveBeenCalledTimes(0);
+    expect(mockLoginUser).toHaveBeenCalledTimes(0);
+    expect(useNavigate).toHaveBeenCalledTimes(0);
+    // 3 error messages should appear
+    expect(container.querySelectorAll('.error-message .is-danger').length).toBe(3);
+
   });
 });
