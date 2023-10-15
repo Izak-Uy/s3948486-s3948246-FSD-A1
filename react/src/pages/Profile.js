@@ -4,9 +4,8 @@ import Footer from "../components/footer";
 import {
   updateUser,
   removeUser,
-  removeLoggedIn,
 } from "../data/repository";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import {
   passwordEditValidate,
   emailEditValidate,
@@ -14,11 +13,10 @@ import {
 } from "../validation/ValidationRules";
 import { useForm, useFormPassword, useFormName } from "../hooks/useForm";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
 import { UserContext } from "../contexts/userContext";
 
 function Profile() {
-  const [user, setUser, loginUser, logoutUser] = useContext(UserContext);
+  const [user, setUser,, logoutUser] = useContext(UserContext);
   const [edit, SetEdit] = useState("none");
   const navigate = useNavigate();
   const { nvalues, nerrors, nhandleChange, nhandleSubmit } = useFormName(
@@ -36,12 +34,14 @@ function Profile() {
     const newUser = await updateUser(user.user_id, user.email, nvalues.name, user.password_hash, user.password_hash);
     setUser(newUser);
     SetEdit(() => "none");
+    nvalues.name = "";
   }
   async function e_save() {
     const newUser = await updateUser(user.user_id, values.email, user.first_name, user.password_hash, user.password_hash);
 
     setUser(newUser);
     SetEdit(() => "none");
+    values.email = "";
   }
 
   async function pw_save() {
@@ -138,7 +138,7 @@ function Profile() {
                       name="name"
                       placeholder="Enter new name"
                       onChange={nhandleChange}
-                      value={nvalues.name}
+                      value={nvalues.name || ""}
                       required
                     />
                     {nerrors.name && (
@@ -149,7 +149,7 @@ function Profile() {
                     <input
                       type="submit"
                       value="Save"
-                      className="email-submit"
+                      className="name-submit"
                     />
                   </div>
                 </div>
@@ -168,7 +168,7 @@ function Profile() {
                       name="email"
                       placeholder="Enter new email"
                       onChange={handleChange}
-                      value={values.email}
+                      value={values.email || ""}
                       required
                     />
                     {errors.email && (
@@ -265,7 +265,7 @@ function Profile() {
                   <input
                     type="submit"
                     value="Save"
-                    className="form-submit"
+                    className="password-submit"
                   />
                 </div>
               </form>
