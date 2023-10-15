@@ -1,7 +1,20 @@
 import React from 'react';
 import './slide.css'
+import { getMovies } from '../data/movieRepository';
+import { useEffect, useState, useCallback } from 'react';
 
 const Slide =({imageArrayProps})=> {
+
+    const [movieList, setMovieList] = useState([]);
+
+    const fetchMovies = useCallback(async () => {
+        const movieListData = await getMovies();
+        setMovieList(movieListData)
+    }, [])
+
+    useEffect(() => {
+        fetchMovies();
+    }, []);
     
     const [currIndex, setIndex] = React.useState(0);
     const delay = 6000;
@@ -10,7 +23,7 @@ const Slide =({imageArrayProps})=> {
         const interval = setInterval(
             () =>
                 setIndex((prevIndex) =>
-                    prevIndex === imageArrayProps.length - 1 ? 0 : prevIndex + 1
+                    prevIndex === movieList.length - 1 ? 0 : prevIndex + 1
                 ),
             delay
         );
@@ -18,7 +31,7 @@ const Slide =({imageArrayProps})=> {
         return () => {
             clearInterval(interval);
         };
-    }, [imageArrayProps.length]);
+    }, [movieList.length]);
 
     return (
         <div 
@@ -27,21 +40,21 @@ const Slide =({imageArrayProps})=> {
                     className='slide-slider'
                     style={{ transform: `translate3d(${-currIndex * 100}%, 0 , 0)` }}
                 >
-                    {imageArrayProps.map((item) => (
+                    {movieList.length > 0 && (movieList.map((item) => (
                         <>
                             <img 
                                 className='bg-image' 
-                                key={item.id} 
+                                key={item.movieId} 
                                 // src={item.imageSrc}
-                                style={{backgroundImage: `url(${item.imageSrc})`}}
+                                style={{backgroundImage: `url(${item.movieImg})`}}
                             ></img>
                             <img 
                                 className='slide-image' 
-                                key={item.id} 
-                                src={item.imageSrc}
+                                key={item.movieId} 
+                                src={item.movieImg}
                             ></img>
                         </>
-                    ))}
+                    )))}
                 </div>
         </div>
     )

@@ -35,8 +35,7 @@ function App() {
             element={<Profile />}
           />
           <Route
-            // exact
-            path="/movies/:movieName"
+            path="/movies/:movieId"
             element={<Movie />}
           />
         </Routes>

@@ -5,6 +5,7 @@ import Footer from "../components/footer";
 import Navbar from "../components/navbar";
 
 function Home() {
+
   const moviesItems = [
     {
       id: 1,
@@ -36,8 +37,8 @@ function Home() {
     <div className="home-wrapper">
       <Navbar />
       <Header />
-      <Slide imageArrayProps={moviesItems} />
-      <Content imageArrayProps={moviesItems} />
+      <Slide />
+      <Content />
       <Footer />
     </div>
   );

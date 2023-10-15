@@ -4,7 +4,9 @@ module.exports = (express, app) => {
     
     // Select all movies
     router.get("/", controller.all);
-
+    // Select one movie by PK
+    router.get("/:movieId", controller.getData);
       // Add routes to server.
     app.use("/api/movies", router);
+
 }

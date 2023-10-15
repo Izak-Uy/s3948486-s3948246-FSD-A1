@@ -16,17 +16,18 @@ module.exports = (sequelize, DataTypes) => {
         movieDescription: {
             type: DataTypes.TEXT,
             allowNull: false
+        },
+        movieDirector: {
+            type: DataTypes.STRING(32),
+            allowNull: false
+        },
+        movieReleaseDate: {
+            type: DataTypes.STRING(32),
+            allowNull: false
         }
     }, {
         timestamps: false,
     });
-
-    // Movie.associate = (models) => {
-    //     Movie.hasMany(models.review, {
-    //         foreignKey: 'movieId',
-    //         onDelete: 'CASCADE'
-    //     })
-    // }
 
     return Movie;
 }

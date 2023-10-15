@@ -1,20 +1,33 @@
 import MovieGalleryItem from "./movie-gallery-item";
 import "./content.css";
+import { getMovies } from "../data/movieRepository";
+import { useEffect, useState, useCallback } from "react";
 
 const Content = ({ imageArrayProps }) => {
+
+  const [movieList, setMovieList] = useState([]);
+
+    const fetchMovies = useCallback(async () => {
+        const movieListData = await getMovies();
+        setMovieList(movieListData)
+    }, [])
+
+    useEffect(() => {
+        fetchMovies();
+    }, []);
 
   return (
     <div className="content-wrapper">
       <div className="releases">
         <div className="content-header"> New Releases</div>
         <div className="gallery-container">
-          {imageArrayProps.map((item) => (
+          {movieList.length > 0 && (movieList.map((item) => (
             <MovieGalleryItem
-              movies={imageArrayProps}
-              key={item.id}
+              movies={movieList}
+              key={item.movieId}
               item={item}
             />
-          ))}
+          )))}
         </div>
       </div>
       <div className="about-us">

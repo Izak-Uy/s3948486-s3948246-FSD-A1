@@ -72,7 +72,9 @@ async function seedData() {
           "4:00 PM",
           "6:00 PM",
           "8:15 PM"
-        ]
+        ],
+        movieDirector: "Christopher Nolan",
+        movieReleaseDate: "20 July 2023"
       },
       {
         movieName: "Barbie",
@@ -88,7 +90,9 @@ async function seedData() {
           "6:00 PM",
           "8:00 PM",
           "9:30 PM"
-        ]
+        ],
+        movieDirector: "Greta Gerwig",
+        movieReleaseDate: "20 July 2023"
       },
       {
         movieName: "Sharknado 2",
@@ -105,7 +109,10 @@ async function seedData() {
           "3:30 PM",
           "12:15 PM",
           "4:30 PM"
-        ]
+        ],
+        movieDirector: "Anthony C. Ferrante",
+        movieReleaseDate: "30 July 2014"
+
       },
       {
         movieName: "Dunkirk",
@@ -122,7 +129,9 @@ async function seedData() {
           "6:30 PM",
           "7:15 PM",
           "8:30 PM"
-        ]
+        ],
+        movieDirector: "Christopher Nolan",
+        movieReleaseDate: "19 July 2017"
       }
   
   ];
@@ -132,6 +141,8 @@ async function seedData() {
         movieName: movie.movieName,
         movieImg: movie.movieImg,
         movieDescription: movie.movieDescription,
+        movieDirector: movie.movieDirector,
+        movieReleaseDate: movie.movieReleaseDate
       });
 
       for (const actor of movie.movieActors) {

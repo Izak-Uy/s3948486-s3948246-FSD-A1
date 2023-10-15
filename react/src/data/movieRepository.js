@@ -6,6 +6,12 @@ async function getMovies() {
     return response.data;
 }
 
+async function getMovieByPK(movie_id) {
+    const response = await axios.get(API_URL + "/movies/" + movie_id);
+    return response.data;
+}
+
 export {
-    getMovies
+    getMovies,
+    getMovieByPK
 }
